@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bs7h2v3m85j21"]
+
+[ext_resource type="Texture2D" uid="uid://c1k2gmta0an6r" path="res://assets/characters/doki/textures/arm.png" id="1_h653n"]
+
+[resource]
+resource_name = "material_2"
+shading_mode = 0
+albedo_texture = ExtResource("1_h653n")
+texture_filter = 0
+texture_repeat = false

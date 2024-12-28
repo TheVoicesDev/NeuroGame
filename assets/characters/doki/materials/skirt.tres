@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bl32kbmk5wd4d"]
+
+[ext_resource type="Texture2D" uid="uid://b85st7tw7m0x6" path="res://assets/characters/doki/textures/skirt.png" id="1_we8xc"]
+
+[resource]
+resource_name = "material_1"
+shading_mode = 0
+albedo_texture = ExtResource("1_we8xc")
+texture_filter = 0
+texture_repeat = false

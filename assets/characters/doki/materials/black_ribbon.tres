@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dpaneime5lbyt"]
+
+[ext_resource type="Texture2D" uid="uid://cx2auwhth1vh5" path="res://assets/characters/doki/textures/black_ribbon.png" id="1_c6sm0"]
+
+[resource]
+resource_name = "material_5"
+albedo_texture = ExtResource("1_c6sm0")
+texture_filter = 0
+texture_repeat = false

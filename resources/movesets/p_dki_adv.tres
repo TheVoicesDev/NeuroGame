@@ -1,0 +1,20 @@
+[gd_resource type="AnimationLibrary" load_steps=7 format=3 uid="uid://ghbyeyhsptq7"]
+
+[ext_resource type="Animation" uid="uid://bkqjs7apr7e6x" path="res://resources/animations/p_dki_dive.tres" id="1_tbh51"]
+[ext_resource type="Animation" uid="uid://bcvj1a33bgudu" path="res://resources/animations/p_dki_fall.tres" id="2_wqgk6"]
+[ext_resource type="Animation" uid="uid://mxmtftivfikc" path="res://resources/animations/p_dki_idle.tres" id="3_ja6rr"]
+[ext_resource type="Animation" uid="uid://6cwcjykw0w4u" path="res://resources/animations/p_dki_jump.tres" id="4_70jan"]
+[ext_resource type="Animation" uid="uid://b303gajcs740v" path="res://resources/animations/p_dki_run.tres" id="5_ruyk7"]
+
+[sub_resource type="Animation" id="Animation_ey3td"]
+length = 0.001
+
+[resource]
+_data = {
+&"Dive": ExtResource("1_tbh51"),
+&"Fall": ExtResource("2_wqgk6"),
+&"Idle": ExtResource("3_ja6rr"),
+&"Jump": ExtResource("4_70jan"),
+&"RESET": SubResource("Animation_ey3td"),
+&"Run": ExtResource("5_ruyk7")
+}

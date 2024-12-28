@@ -1,0 +1,22 @@
+﻿<Project Sdk="Godot.NET.Sdk/4.4.0-dev.5">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <PublishAOT>true</PublishAOT>
+    <LangVersion>12</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="src\Fantome.SourceGenerators\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="src\Fantome.SourceGenerators\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- Root the assemblies to avoid trimming. -->
+    <TrimmerRootAssembly Include="GodotSharp" />
+    <TrimmerRootAssembly Include="$(TargetName)" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="src\Fantome.SourceGenerators\Fantome.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+</Project>

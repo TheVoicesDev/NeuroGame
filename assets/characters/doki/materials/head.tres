@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dp2yrx74yf5q5"]
+
+[ext_resource type="Texture2D" uid="uid://4y7ocv0ehefx" path="res://assets/characters/doki/textures/head.png" id="1_gkw2w"]
+
+[resource]
+resource_name = "material_8"
+shading_mode = 0
+albedo_texture = ExtResource("1_gkw2w")
+texture_filter = 0
+texture_repeat = false
+point_size = 56.0

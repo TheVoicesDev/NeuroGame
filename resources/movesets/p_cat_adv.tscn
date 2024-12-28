@@ -1,0 +1,83 @@
+[gd_scene load_steps=7 format=3 uid="uid://bisdu0vagdesx"]
+
+[ext_resource type="Script" uid="uid://ce701rqav7xe0" path="res://src/Fantome/Characters/MoveSet.cs" id="1_swccn"]
+[ext_resource type="Script" uid="uid://cabib24fwrj2w" path="res://scripts/states/state.gd" id="2_qxkh6"]
+[ext_resource type="Script" uid="uid://bx0mnbkcydhjw" path="res://scripts/states/move_state.gd" id="2_t6gpp"]
+[ext_resource type="Script" uid="uid://p8fpmia44geh" path="res://scripts/states/jump_state.gd" id="4_4knoy"]
+[ext_resource type="Script" uid="uid://dhkwj2acdvd3n" path="res://scripts/states/fall_state.gd" id="5_0gp51"]
+[ext_resource type="Script" uid="uid://cgav0t0cbeivs" path="res://scripts/states/slow_state.gd" id="6_mkf3t"]
+
+[node name="CatMoveSet" type="Node"]
+script = ExtResource("1_swccn")
+DefaultStateName = "Idle"
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource("2_qxkh6")
+
+[node name="Slow" type="Node" parent="."]
+script = ExtResource("6_mkf3t")
+max_speed = 0.0
+speed_increment = 0.0
+speed_decrement = 0.2
+rotation_weight = 0.05
+time_until_switch = 0.017
+
+[node name="Walk" type="Node" parent="."]
+script = ExtResource("2_t6gpp")
+max_speed = 4.0
+speed_increment = 0.075
+speed_decrement = 0.02
+rotation_weight = 0.05
+strength_threshold = Vector2(0, 0.3)
+cap_max_speed = true
+time_until_switch = 0.033
+
+[node name="Jog" type="Node" parent="."]
+script = ExtResource("2_t6gpp")
+max_speed = 8.0
+speed_increment = 0.1
+speed_decrement = 0.2
+rotation_weight = 0.05
+strength_threshold = Vector2(0.3, 0.7)
+cap_max_speed = true
+time_until_switch = 0.033
+
+[node name="Run" type="Node" parent="."]
+script = ExtResource("2_t6gpp")
+speed_increment = 0.3
+speed_decrement = 0.2
+rotation_weight = 0.05
+strength_threshold = Vector2(0.7, 1)
+
+[node name="Jump" type="Node" parent="."]
+script = ExtResource("4_4knoy")
+initial_jump_speed = 6.0
+max_jump_speed = 10.0
+jump_increment = 0.15
+speed_increment = 0.075
+speed_decrement = 0.0
+rotation_weight = 0.025
+action = "adv_jump"
+time_until_switch = 0.033
+
+[node name="Fall" type="Node" parent="."]
+script = ExtResource("5_0gp51")
+speed_increment = 0.075
+speed_decrement = 0.0
+rotation_weight = 0.025
+time_until_switch = 0.033
+
+[connection signal="BeginState" from="." to="Idle" method="begin"]
+[connection signal="BeginState" from="." to="Slow" method="begin"]
+[connection signal="BeginState" from="." to="Walk" method="begin"]
+[connection signal="BeginState" from="." to="Jog" method="begin"]
+[connection signal="BeginState" from="." to="Run" method="begin"]
+[connection signal="BeginState" from="." to="Jump" method="begin"]
+[connection signal="BeginState" from="." to="Fall" method="begin"]
+[connection signal="EndState" from="." to="Idle" method="end"]
+[connection signal="EndState" from="." to="Slow" method="end"]
+[connection signal="EndState" from="." to="Walk" method="end"]
+[connection signal="EndState" from="." to="Jog" method="end"]
+[connection signal="EndState" from="." to="Run" method="end"]
+[connection signal="EndState" from="." to="Jump" method="end"]
+[connection signal="EndState" from="." to="Fall" method="end"]

@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c58ypi1c55p45"]
+
+[ext_resource type="Script" uid="uid://ce701rqav7xe0" path="res://src/Fantome/Characters/MoveSet.cs" id="1_cifxf"]
+[ext_resource type="AnimationLibrary" uid="uid://cgtcjy5dlm748" path="res://resources/movesets/p_stc_adv.tres" id="2_2tqns"]
+[ext_resource type="Script" uid="uid://cabib24fwrj2w" path="res://scripts/states/state.gd" id="2_xn6br"]
+[ext_resource type="Script" uid="uid://bx0mnbkcydhjw" path="res://scripts/states/move_state.gd" id="3_0fc3c"]
+[ext_resource type="Script" uid="uid://cgav0t0cbeivs" path="res://scripts/states/slow_state.gd" id="4_rkfft"]
+
+[node name="Adventure" type="Node" node_paths=PackedStringArray("DefaultState")]
+script = ExtResource("1_cifxf")
+DefaultState = NodePath("Idle")
+Animations = ExtResource("2_2tqns")
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource("2_xn6br")
+
+[node name="Walk" type="Node" parent="."]
+script = ExtResource("3_0fc3c")
+max_speed = 4.0
+speed_increment = 4.0
+speed_decrement = 0.1
+rotation_weight = 1.0
+use_character_rotation = false
+animation_name = &"walk"
+
+[node name="Slow" type="Node" parent="."]
+script = ExtResource("4_rkfft")
+max_speed = 4.0
+speed_increment = 0.0
+speed_decrement = 4.0
+rotation_weight = 1.0
+use_character_rotation = false
+animation_name = &""

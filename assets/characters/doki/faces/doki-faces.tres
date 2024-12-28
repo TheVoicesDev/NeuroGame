@@ -1,0 +1,184 @@
+[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://hlsvbxqtudsj"]
+
+[ext_resource type="Texture2D" uid="uid://e1wpu32oos4o" path="res://assets/characters/doki/faces/doki-faces.png" id="1_ma5pt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ma5pt"]
+atlas = ExtResource("1_ma5pt")
+region = Rect2(0, 0, 117, 17)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8u15"]
+atlas = ExtResource("1_ma5pt")
+region = Rect2(117, 0, 55, 31)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyd3x"]
+atlas = ExtResource("1_ma5pt")
+region = Rect2(134, 35, 55, 27)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gu07y"]
+atlas = ExtResource("1_ma5pt")
+region = Rect2(172, 0, 56, 35)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7xn1"]
+atlas = ExtResource("1_ma5pt")
+region = Rect2(189, 35, 57, 35)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce47q"]
+atlas = ExtResource("1_ma5pt")
+region = Rect2(0, 35, 57, 30)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejhx8"]
+atlas = ExtResource("1_ma5pt")
+region = Rect2(0, 70, 58, 29)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwxrh"]
+atlas = ExtResource("1_ma5pt")
+region = Rect2(57, 35, 30, 9)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dre6"]
+atlas = ExtResource("1_ma5pt")
+region = Rect2(87, 35, 34, 12)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa8ja"]
+atlas = ExtResource("1_ma5pt")
+region = Rect2(121, 35, 13, 5)
+filter_clip = true
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ma5pt")
+}],
+"loop": false,
+"name": &"Eyebrows_Def",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8u15")
+}],
+"loop": false,
+"name": &"Eyes_AlertL",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyd3x")
+}],
+"loop": false,
+"name": &"Eyes_AlertR",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gu07y")
+}],
+"loop": false,
+"name": &"Eyes_DefL",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7xn1")
+}],
+"loop": false,
+"name": &"Eyes_DefR",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ce47q")
+}],
+"loop": false,
+"name": &"Eyes_DeterminedL",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejhx8")
+}],
+"loop": false,
+"name": &"Eyes_DeterminedR",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwxrh")
+}],
+"loop": false,
+"name": &"Mouth_Alert",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dre6")
+}],
+"loop": false,
+"name": &"Mouth_Def",
+"speed": 24.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aa8ja")
+}],
+"loop": false,
+"name": &"Mouth_Determined",
+"speed": 24.0
+}]

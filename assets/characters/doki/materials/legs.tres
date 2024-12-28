@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://12n5tlhnvkmx"]
+
+[ext_resource type="Texture2D" uid="uid://crrudu4uhh8df" path="res://assets/characters/doki/textures/legs.png" id="1_xo1ax"]
+
+[resource]
+resource_name = "material_9"
+shading_mode = 0
+albedo_texture = ExtResource("1_xo1ax")
+texture_filter = 0
+texture_repeat = false

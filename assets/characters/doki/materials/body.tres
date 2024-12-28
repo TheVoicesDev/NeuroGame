@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://10qxeg58mxq"]
+
+[ext_resource type="Texture2D" uid="uid://c4n320w7f30ic" path="res://assets/characters/doki/textures/body.png" id="1_nkjjw"]
+
+[resource]
+resource_name = "material_0"
+shading_mode = 0
+diffuse_mode = 3
+albedo_texture = ExtResource("1_nkjjw")
+texture_filter = 0
+texture_repeat = false

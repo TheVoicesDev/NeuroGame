@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://clxg0m5kric80"]
+
+[ext_resource type="Texture2D" uid="uid://r8b4brgko1fe" path="res://assets/characters/doki/textures/hat.png" id="1_2ahle"]
+
+[resource]
+resource_name = "material_6"
+shading_mode = 0
+albedo_texture = ExtResource("1_2ahle")
+texture_filter = 0
+texture_repeat = false

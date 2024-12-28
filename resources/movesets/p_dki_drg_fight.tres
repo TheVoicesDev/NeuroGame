@@ -1,0 +1,20 @@
+[gd_resource type="AnimationLibrary" load_steps=8 format=3 uid="uid://ceglhxkrifwce"]
+
+[ext_resource type="Animation" uid="uid://c5mm5bi8046eb" path="res://resources/animations/p_dki_drg_cmb_01.tres" id="1_opdg6"]
+[ext_resource type="Animation" uid="uid://caeeeqwabe3nu" path="res://resources/animations/p_dki_drg_cmb_02.tres" id="2_chk12"]
+[ext_resource type="Animation" uid="uid://d3b87gnq37grr" path="res://resources/animations/p_dki_drg_cmb_03.tres" id="3_haiml"]
+[ext_resource type="Animation" uid="uid://caoyux06kcp1u" path="res://resources/animations/p_dki_drg_cmb_04.tres" id="4_jfhun"]
+[ext_resource type="Animation" uid="uid://dqllbgykllxfd" path="res://resources/animations/p_dki_drg_cmb_loop.tres" id="5_a36yw"]
+[ext_resource type="Animation" uid="uid://bxeaseolrekru" path="res://resources/animations/p_dki_drg_stance.tres" id="6_fy7tv"]
+[ext_resource type="Animation" uid="uid://bp06qqwjew2cm" path="res://resources/animations/p_dki_drg_cmb_01_fin.tres" id="7_4fofn"]
+
+[resource]
+_data = {
+&"CMB_01": ExtResource("1_opdg6"),
+&"CMB_01_FIN": ExtResource("7_4fofn"),
+&"CMB_02": ExtResource("2_chk12"),
+&"CMB_03": ExtResource("3_haiml"),
+&"CMB_04": ExtResource("4_jfhun"),
+&"CMB_LOOP": ExtResource("5_a36yw"),
+&"Stance": ExtResource("6_fy7tv")
+}
