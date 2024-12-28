@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://c5kplx51ro2fx"]
+
+[ext_resource type="Texture2D" uid="uid://sh4vns5j2c48" path="res://assets/characters/neuro/textures/Neuro_2.png" id="1_5ylfp"]
+
+[resource]
+resource_name = "material_2"
+shading_mode = 0
+albedo_texture = ExtResource("1_5ylfp")
+texture_filter = 0
+texture_repeat = false
