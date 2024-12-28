@@ -1,6 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://bstf3vdm5gl8"]
+[gd_scene load_steps=25 format=3 uid="uid://bstf3vdm5gl8"]
 
 [ext_resource type="ArrayMesh" uid="uid://bkf7y8kbh1xtp" path="res://assets/characters/neuro/mesh.tres" id="1_vkqes"]
+[ext_resource type="Script" uid="uid://nmyoh6gi32a1" path="res://src/Doki/Characters/DokiCharacter.cs" id="1_y8emd"]
+[ext_resource type="Script" uid="uid://cejr36hrvg2su" path="res://src/Fantome/Characters/StateController.cs" id="4_jtguj"]
+[ext_resource type="PackedScene" uid="uid://cawm252q17o71" path="res://resources/movesets/p_dki_adv.tscn" id="5_fieml"]
+[ext_resource type="PackedScene" uid="uid://bmpmmsdgk3r5m" path="res://resources/movesets/p_nro_drg_fight.tscn" id="5_y76sy"]
+[ext_resource type="Script" uid="uid://c6ag3tltsf37b" path="res://scripts/animation/anim_process_default.gd" id="7_nua4b"]
+[ext_resource type="Script" uid="uid://3m3y5c71m8bq" path="res://src/Fantome/Characters/GravityController.cs" id="8_vrbgy"]
+[ext_resource type="Script" uid="uid://8gm1em25oh2t" path="res://src/Fantome/Characters/HitBox.cs" id="9_q8jkg"]
+[ext_resource type="Script" uid="uid://dt13b0ij4cuw4" path="res://src/Fantome/Characters/HitArea.cs" id="10_wmf3g"]
+[ext_resource type="Script" uid="uid://7egrfoh1lpd3" path="res://src/Fantome/Characters/HurtBox.cs" id="11_5pt46"]
+[ext_resource type="Animation" uid="uid://b2xn1tx0pis8o" path="res://resources/animations/p_dki_reset.tres" id="12_uvah1"]
 
 [sub_resource type="Skin" id="Skin_y67wc"]
 resource_name = "Skin"
@@ -48,7 +58,59 @@ bind/13/name = &"FootR"
 bind/13/bone = -1
 bind/13/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15625, -0.10625, -0.01645)
 
-[node name="Neuro" type="Node3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vkqes"]
+radius = 0.6
+height = 2.33414
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ff7of"]
+size = Vector3(0.989349, 0.96994, 0.915955)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y8emd"]
+size = Vector3(0.824341, 0.486946, 0.87014)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vq4o8"]
+size = Vector3(0.269135, 0.240414, 0.208374)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6i41j"]
+size = Vector3(0.26178, 0.385986, 0.301453)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jtguj"]
+size = Vector3(0.172485, 0.29512, 0.250595)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fieml"]
+size = Vector3(0.772518, 0.259247, 0.701553)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_igvjs"]
+size = Vector3(0.369694, 0.258209, 0.296875)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nua4b"]
+size = Vector3(0.282867, 0.170654, 0.25708)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vrbgy"]
+size = Vector3(0.287476, 0.150238, 0.431335)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q8jkg"]
+size = Vector3(1.79187, 2.22697, 1.13683)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gwgw5"]
+_data = {
+&"RESET": ExtResource("12_uvah1")
+}
+
+[node name="Neuro" type="CharacterBody3D" node_paths=PackedStringArray("VisualReference", "HitBox", "SkeletonReference", "StateController", "GravityController", "BodyAnimator")]
+collision_layer = 2
+collision_mask = 3
+floor_constant_speed = true
+floor_max_angle = 1.0472
+script = ExtResource("1_y8emd")
+Health = 100
+VisualReference = NodePath("Skeleton3D/Mesh")
+HitBox = NodePath("Hitbox")
+SkeletonReference = NodePath("Skeleton3D")
+StateController = NodePath("StateController")
+GravityController = NodePath("GravityController")
+BodyAnimator = NodePath("BodyAnimator")
+metadata/_custom_type_script = ExtResource("1_y8emd")
 
 [node name="Skeleton3D" type="Skeleton3D" parent="."]
 bones/0/name = "Center_2"
@@ -153,3 +215,294 @@ bones/13/scale = Vector3(1, 1, 1)
 [node name="Mesh" type="MeshInstance3D" parent="Skeleton3D"]
 mesh = ExtResource("1_vkqes")
 skin = SubResource("Skin_y67wc")
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.167, 0)
+shape = SubResource("CapsuleShape3D_vkqes")
+
+[node name="StateController" type="Node" parent="." node_paths=PackedStringArray("Character", "MoveSets")]
+script = ExtResource("4_jtguj")
+Character = NodePath("..")
+MoveSets = [NodePath("Adventure"), NodePath("NeuroDragoon")]
+metadata/_custom_type_script = ExtResource("4_jtguj")
+
+[node name="Adventure" parent="StateController" instance=ExtResource("5_fieml")]
+
+[node name="NeuroDragoon" parent="StateController" instance=ExtResource("5_y76sy")]
+
+[node name="DefaultAnimationProcessor" type="Node" parent="." node_paths=PackedStringArray("state_controller")]
+script = ExtResource("7_nua4b")
+state_controller = NodePath("../StateController")
+
+[node name="GravityController" type="Node3D" parent="." node_paths=PackedStringArray("Character")]
+script = ExtResource("8_vrbgy")
+Mass = 20.0
+Character = NodePath("..")
+
+[node name="Hitbox" type="Node3D" parent="." node_paths=PackedStringArray("Character")]
+script = ExtResource("9_q8jkg")
+Character = NodePath("..")
+
+[node name="Head" type="BoneAttachment3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0625, 0)
+bone_name = "Neck"
+bone_idx = 6
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="Head" type="Area3D" parent="Hitbox/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.427713, 0)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("10_wmf3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox/Head/Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0240325, 0.103348, 0.000946045)
+shape = SubResource("BoxShape3D_ff7of")
+
+[node name="Torso" type="BoneAttachment3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.725, 0)
+bone_name = "Torso"
+bone_idx = 1
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="Torso" type="Area3D" parent="Hitbox/Torso"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("10_wmf3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox/Torso/Torso"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0143432, 0.187313, 0.0556602)
+shape = SubResource("BoxShape3D_y8emd")
+
+[node name="UpperArmL" type="BoneAttachment3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.328125, 1.04063, 0)
+bone_name = "UpperArmL"
+bone_idx = 2
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="UpperArmL" type="Area3D" parent="Hitbox/UpperArmL"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("10_wmf3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox/UpperArmL/UpperArmL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.116562, -0.00319493, 0.00653071)
+shape = SubResource("BoxShape3D_vq4o8")
+
+[node name="LowerArmL" type="BoneAttachment3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.578125, 1.04063, 0)
+bone_name = "LowerArmL"
+bone_idx = 3
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="LowerArmL" type="Area3D" parent="Hitbox/LowerArmL"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("10_wmf3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox/LowerArmL/LowerArmL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.123795, 0.00995636, 0.00265497)
+shape = SubResource("BoxShape3D_6i41j")
+
+[node name="HandL" type="BoneAttachment3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.578125, 1.04063, 0)
+bone_name = "LowerArmL"
+bone_idx = 3
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="HandL" type="Area3D" parent="Hitbox/HandL"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("10_wmf3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox/HandL/HandL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.308, 0, 0.008)
+shape = SubResource("BoxShape3D_jtguj")
+
+[node name="UpperArmR" type="BoneAttachment3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.328125, 1.04063, 0)
+bone_name = "UpperArmR"
+bone_idx = 4
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="UpperArmR" type="Area3D" parent="Hitbox/UpperArmR"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("10_wmf3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox/UpperArmR/UpperArmR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.117, -0.003, 0.007)
+shape = SubResource("BoxShape3D_vq4o8")
+
+[node name="LowerArmR" type="BoneAttachment3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.578125, 1.04063, 0)
+bone_name = "LowerArmR"
+bone_idx = 5
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="LowerArmR" type="Area3D" parent="Hitbox/LowerArmR"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("10_wmf3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox/LowerArmR/LowerArmR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124, 0.01, 0.003)
+shape = SubResource("BoxShape3D_6i41j")
+
+[node name="HandR" type="BoneAttachment3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.578125, 1.04063, 0)
+bone_name = "LowerArmR"
+bone_idx = 5
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="HandR" type="Area3D" parent="Hitbox/HandR"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("10_wmf3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox/HandR/HandR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.308, 0.000357032, 0.00832098)
+shape = SubResource("BoxShape3D_jtguj")
+
+[node name="Hips" type="BoneAttachment3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+bone_name = "Hips"
+bone_idx = 7
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="Hips" type="Area3D" parent="Hitbox/Hips"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("10_wmf3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox/Hips/Hips"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00253828, 0.0772858, 0.0228039)
+shape = SubResource("BoxShape3D_fieml")
+
+[node name="ThighL" type="BoneAttachment3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15625, 0.46875, 0.014375)
+bone_name = "ThighL"
+bone_idx = 8
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="ThighL" type="Area3D" parent="Hitbox/ThighL"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("10_wmf3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox/ThighL/ThighL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00955941, -0.103128, -0.00195241)
+shape = SubResource("BoxShape3D_igvjs")
+
+[node name="ShinL" type="BoneAttachment3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15625, 0.28125, 0.015625)
+bone_name = "ShinL"
+bone_idx = 9
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="ShinL" type="Area3D" parent="Hitbox/ShinL"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("10_wmf3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox/ShinL/ShinL"]
+transform = Transform3D(0.999993, 0, 0, 0, 1, 0, 0, 0, 0.999993, -0.0125571, -0.0934296, -0.0018315)
+shape = SubResource("BoxShape3D_nua4b")
+
+[node name="FootL" type="BoneAttachment3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15625, 0.10625, 0.01645)
+bone_name = "FootL"
+bone_idx = 10
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="FootL" type="Area3D" parent="Hitbox/FootL"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("10_wmf3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox/FootL/FootL"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000304639, -0.0425873, -0.0829769)
+shape = SubResource("BoxShape3D_vrbgy")
+
+[node name="ThighR" type="BoneAttachment3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+bone_name = "ThighR"
+bone_idx = 11
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="ThighR" type="Area3D" parent="Hitbox/ThighR"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("10_wmf3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox/ThighR/ThighR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01, -0.103, -0.002)
+shape = SubResource("BoxShape3D_igvjs")
+
+[node name="ShinR" type="BoneAttachment3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15625, 0.28125, 0.015625)
+bone_name = "ShinR"
+bone_idx = 12
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="ShinR" type="Area3D" parent="Hitbox/ShinR"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("10_wmf3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox/ShinR/ShinR"]
+transform = Transform3D(0.999993, 0, 0, 0, 1, 0, 0, 0, 0.999993, 0.013, -0.093, -0.002)
+shape = SubResource("BoxShape3D_nua4b")
+
+[node name="FootR" type="BoneAttachment3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15625, 0.10625, 0.01645)
+bone_name = "FootR"
+bone_idx = 13
+use_external_skeleton = true
+external_skeleton = NodePath("../../Skeleton3D")
+
+[node name="FootR" type="Area3D" parent="Hitbox/FootR"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("10_wmf3g")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox/FootR/FootR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000304639, -0.0425873, -0.0829769)
+shape = SubResource("BoxShape3D_vrbgy")
+
+[node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("Character")]
+visible = false
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("11_5pt46")
+Character = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137755, 1.09371, 0.0253666)
+shape = SubResource("BoxShape3D_q8jkg")
+
+[node name="BodyAnimator" type="AnimationPlayer" parent="."]
+deterministic = true
+root_motion_track = NodePath("Skeleton3D:Center")
+root_motion_local = false
+libraries = {
+&"": SubResource("AnimationLibrary_gwgw5")
+}
+playback_auto_capture = false
+playback_default_blend_time = 0.1
+
+[connection signal="ProcessAnimation" from="StateController" to="DefaultAnimationProcessor" method="process_anim"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7eit64srxqyn"]
+[gd_scene load_steps=13 format=3 uid="uid://c7eit64srxqyn"]
 
 [ext_resource type="Script" uid="uid://mda2k63s2k1t" path="res://src/Fantome/FantomeGame.cs" id="1_us1gy"]
+[ext_resource type="PackedScene" uid="uid://bstf3vdm5gl8" path="res://resources/characters/neuro.tscn" id="2_452qw"]
 [ext_resource type="PackedScene" uid="uid://cob7f3bg4fwwi" path="res://resources/characters/doki.tscn" id="2_e61lo"]
 [ext_resource type="PackedScene" uid="uid://dvcusdvciv5vp" path="res://resources/characters/stitch.tscn" id="3_f0sku"]
 [ext_resource type="Script" uid="uid://37ogukc40u0f" path="res://resources/controllers/p_dki_controller.gd" id="3_f65a5"]
@@ -26,8 +27,8 @@ size = Vector3(9, 0.5, 9)
 [node name="TestScene" type="Node3D" node_paths=PackedStringArray("Player", "Focus", "Camera")]
 process_physics_priority = 1
 script = ExtResource("1_us1gy")
-Player = NodePath("Doki")
-Focus = NodePath("Doki")
+Player = NodePath("Neuro")
+Focus = NodePath("Neuro")
 Camera = NodePath("CameraController")
 
 [node name="Floor" type="StaticBody3D" parent="."]
@@ -42,8 +43,8 @@ surface_material_override/0 = SubResource("StandardMaterial3D_ewk5j")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
 shape = SubResource("BoxShape3D_2d62g")
 
-[node name="Doki" parent="." instance=ExtResource("2_e61lo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.388065, 8.92156, -0.310321)
+[node name="Neuro" parent="." instance=ExtResource("2_452qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.04176, 0)
 
 [node name="Doki2" parent="." instance=ExtResource("2_e61lo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.87472, 8.98629, -0.460177)

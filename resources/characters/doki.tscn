@@ -122,7 +122,7 @@ VisualReference = NodePath("Skeleton3D/Mesh")
 HitBox = NodePath("Hitbox")
 SkeletonReference = NodePath("Skeleton3D")
 StateController = NodePath("StateController")
-GravityController = NodePath("GravityController3D")
+GravityController = NodePath("GravityController")
 BodyAnimator = NodePath("BodyAnimator")
 
 [node name="Skeleton3D" type="Skeleton3D" parent="."]
@@ -289,7 +289,7 @@ Controller = NodePath("..")
 script = ExtResource("5_5ifhs")
 state_controller = NodePath("../StateController")
 
-[node name="GravityController3D" type="Node3D" parent="." node_paths=PackedStringArray("Character")]
+[node name="GravityController" type="Node3D" parent="." node_paths=PackedStringArray("Character")]
 script = ExtResource("4_m4i4r")
 Mass = 20.0
 Character = NodePath("..")
@@ -552,6 +552,7 @@ shape = SubResource("BoxShape3D_hqtku")
 [node name="BodyAnimator" type="AnimationPlayer" parent="."]
 deterministic = true
 root_motion_track = NodePath("Skeleton3D:Center")
+root_motion_local = false
 libraries = {
 &"": SubResource("AnimationLibrary_gwgw5")
 }
