@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dga422yurn1fj"]
+
+[ext_resource type="Texture2D" uid="uid://cb1i1g07bydvf" path="res://assets/characters/evil/textures/Evil_3.png" id="1_4i35a"]
+
+[resource]
+resource_name = "material_3"
+shading_mode = 0
+albedo_texture = ExtResource("1_4i35a")
+texture_filter = 0
+texture_repeat = false

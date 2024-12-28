@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://73f04rw1jm7g"
+path="res://.godot/imported/Evil_7.png-064711505f6f2d6149d6527fd6d066e5.ctex"
+metadata={
+"vram_texture": false
+}
+generator_parameters={
+"md5": "3b7ad8ec4b72c77fccfc141c33bc19ba"
+}
+
+[deps]
+
+source_file="res://assets/characters/evil/textures/Evil_7.png"
+dest_files=["res://.godot/imported/Evil_7.png-064711505f6f2d6149d6527fd6d066e5.ctex"]
+
+[params]
+
+compress/mode=3
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=2
+compress/channel_pack=1
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
