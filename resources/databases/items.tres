@@ -1,0 +1,81 @@
+[gd_resource type="Resource" script_class="NeuroItemDatabase" load_steps=19 format=3 uid="uid://byhsvpmhgkv62"]
+
+[ext_resource type="Script" path="res://src/Neuro/NeuroItemDatabase.cs" id="1_s505f"]
+[ext_resource type="Texture2D" uid="uid://cgrikf1nk45vb" path="res://assets/items/calc.png" id="1_ta7wr"]
+[ext_resource type="Script" path="res://src/Neuro/NeuroItemEntry.cs" id="2_mbebm"]
+[ext_resource type="Texture2D" uid="uid://bq1r4dyalxtdh" path="res://assets/items/cookie.png" id="3_fhdo6"]
+[ext_resource type="Texture2D" uid="uid://b2vwieu2eq6fo" path="res://assets/items/duck.png" id="4_bok7t"]
+[ext_resource type="Texture2D" uid="uid://pwbm7de0ayn8" path="res://assets/items/hallu_stew.png" id="5_bok7t"]
+[ext_resource type="Texture2D" uid="uid://d2bqkcvqxt6tc" path="res://assets/items/hat_stack.png" id="6_sdc88"]
+[ext_resource type="Texture2D" uid="uid://dmre38ghm1abx" path="res://assets/items/lava_lamp.png" id="7_a1w6x"]
+[ext_resource type="Texture2D" uid="uid://bndxk463xgiar" path="res://assets/items/osu_circle.png" id="8_tdtmy"]
+[ext_resource type="Texture2D" uid="uid://dort710r27utx" path="res://assets/items/pirate_hat.png" id="9_swxmp"]
+
+[sub_resource type="Resource" id="Resource_fhdo6"]
+script = ExtResource("2_mbebm")
+Id = &"calc"
+Icon = ExtResource("1_ta7wr")
+Name = "TI-84 Plus CE Graphing Calculator"
+Description = "It's probably useful for doing math homework and stuff."
+metadata/_custom_type_script = ExtResource("2_mbebm")
+
+[sub_resource type="Resource" id="Resource_bok7t"]
+script = ExtResource("2_mbebm")
+Id = &"cookie"
+Icon = ExtResource("3_fhdo6")
+Name = "Cookie"
+Description = "Yummy!"
+metadata/_custom_type_script = ExtResource("2_mbebm")
+
+[sub_resource type="Resource" id="Resource_sdc88"]
+script = ExtResource("2_mbebm")
+Id = &"duck"
+Icon = ExtResource("4_bok7t")
+Name = "Duckling"
+Description = "Looks familiar. Probably fell off your head at one point."
+metadata/_custom_type_script = ExtResource("2_mbebm")
+
+[sub_resource type="Resource" id="Resource_a1w6x"]
+script = ExtResource("2_mbebm")
+Id = &"hallu_stew"
+Icon = ExtResource("5_bok7t")
+Name = "Hallucination Stew"
+Description = "Includes vitamins!"
+metadata/_custom_type_script = ExtResource("2_mbebm")
+
+[sub_resource type="Resource" id="Resource_tdtmy"]
+script = ExtResource("2_mbebm")
+Id = &"hat_stack"
+Icon = ExtResource("6_sdc88")
+Name = "Pile of Hats"
+Description = "It's really important, trust."
+metadata/_custom_type_script = ExtResource("2_mbebm")
+
+[sub_resource type="Resource" id="Resource_swxmp"]
+script = ExtResource("2_mbebm")
+Id = &"lava_lamp"
+Icon = ExtResource("7_a1w6x")
+Name = "Neuro-sama Lava Lamp"
+Description = "Don't they sell these somewhere?"
+metadata/_custom_type_script = ExtResource("2_mbebm")
+
+[sub_resource type="Resource" id="Resource_s75aa"]
+script = ExtResource("2_mbebm")
+Id = &"osu_circle"
+Icon = ExtResource("8_tdtmy")
+Name = "osu! hit object"
+Description = "To think it all started with this. Look how far you've come!"
+metadata/_custom_type_script = ExtResource("2_mbebm")
+
+[sub_resource type="Resource" id="Resource_ob0gd"]
+script = ExtResource("2_mbebm")
+Id = &"pirate_hat"
+Icon = ExtResource("9_swxmp")
+Name = "Pirate Hat"
+Description = "Ahoy!"
+metadata/_custom_type_script = ExtResource("2_mbebm")
+
+[resource]
+script = ExtResource("1_s505f")
+Entries = Array[Object]([SubResource("Resource_fhdo6"), SubResource("Resource_bok7t"), SubResource("Resource_sdc88"), SubResource("Resource_a1w6x"), SubResource("Resource_tdtmy"), SubResource("Resource_swxmp"), SubResource("Resource_s75aa"), SubResource("Resource_ob0gd")])
+metadata/_custom_type_script = ExtResource("1_s505f")

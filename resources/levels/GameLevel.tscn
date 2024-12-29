@@ -1,6 +1,5 @@
-[gd_scene load_steps=283 format=3 uid="uid://dg876kb8h1r0c"]
+[gd_scene load_steps=282 format=3 uid="uid://dg876kb8h1r0c"]
 
-[ext_resource type="Script" uid="uid://mda2k63s2k1t" path="res://src/Fantome/FantomeGame.cs" id="1_q0386"]
 [ext_resource type="Script" uid="uid://b2ogo4cm2doc0" path="res://resources/controllers/p_evil_controller.gd" id="2_a482a"]
 [ext_resource type="Script" uid="uid://d21m733xh6s2v" path="res://addons/cyclops_level_builder/nodes/cyclops_block.gd" id="2_lj1m6"]
 [ext_resource type="Script" uid="uid://yfs86u0cljfy" path="res://addons/cyclops_level_builder/resources/data_vector_byte.gd" id="3_rpor3"]
@@ -2764,8 +2763,6 @@ face_vertex_data = {
 }
 
 [node name="GameLevel" type="Node3D"]
-script = ExtResource("1_q0386")
-metadata/_custom_type_script = ExtResource("1_q0386")
 
 [node name="EvilAreas" type="Node3D" parent="."]
 
