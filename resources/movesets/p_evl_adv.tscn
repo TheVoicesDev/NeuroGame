@@ -1,0 +1,70 @@
+[gd_scene load_steps=10 format=3 uid="uid://rmla8lkseggb"]
+
+[ext_resource type="Script" uid="uid://ce701rqav7xe0" path="res://src/Fantome/Characters/MoveSet.cs" id="1_8sp5s"]
+[ext_resource type="AnimationLibrary" uid="uid://ghbyeyhsptq7" path="res://resources/movesets/p_dki_adv.tres" id="2_vasmt"]
+[ext_resource type="Script" uid="uid://cabib24fwrj2w" path="res://scripts/states/state.gd" id="3_a8ryv"]
+[ext_resource type="Script" uid="uid://b4ojso2v7rjog" path="res://scripts/states/dive_state.gd" id="4_40wpu"]
+[ext_resource type="Script" uid="uid://bx0mnbkcydhjw" path="res://scripts/states/move_state.gd" id="5_jqhyb"]
+[ext_resource type="Script" uid="uid://p8fpmia44geh" path="res://scripts/states/jump_state.gd" id="6_pt8vc"]
+[ext_resource type="Script" uid="uid://cgav0t0cbeivs" path="res://scripts/states/slow_state.gd" id="7_0wr6g"]
+[ext_resource type="Script" uid="uid://dhkwj2acdvd3n" path="res://scripts/states/fall_state.gd" id="8_q24pu"]
+[ext_resource type="Script" uid="uid://wwm5ojw3np6c" path="res://scripts/states/death_state.gd" id="9_mism5"]
+
+[node name="Adventure" type="Node" node_paths=PackedStringArray("DefaultState")]
+script = ExtResource("1_8sp5s")
+DefaultState = NodePath("Idle")
+Animations = ExtResource("2_vasmt")
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource("3_a8ryv")
+animation_name = &"Idle"
+time_until_switch = 0.0
+
+[node name="Dive" type="Node" parent="." node_paths=PackedStringArray("fall_state", "move_state")]
+script = ExtResource("4_40wpu")
+dive_speed = 8.0
+jump_speed = 3.0
+fall_state = NodePath("../Fall")
+move_state = NodePath("../Run")
+animation_name = &"Dive"
+time_until_switch = 0.0
+
+[node name="Run" type="Node" parent="."]
+script = ExtResource("5_jqhyb")
+max_speed = 8.0
+speed_increment = 0.4
+speed_decrement = 0.8
+rotation_weight = 0.015
+animation_name = &"Run"
+time_until_switch = 0.01
+
+[node name="Jump" type="Node" parent="." node_paths=PackedStringArray("fall_state")]
+script = ExtResource("6_pt8vc")
+jump_speed = 2.0
+seconds_till_fall = 0.3
+fall_state = NodePath("../Fall")
+rotation_weight = 0.025
+strength_threshold = Vector2(-0.01, 1)
+animation_name = &"Jump"
+time_until_switch = 0.0
+
+[node name="Slow" type="Node" parent="."]
+script = ExtResource("7_0wr6g")
+match_speed_with_anim = true
+speed_increment = 0.0
+speed_decrement = 0.4
+animation_name = &""
+time_until_switch = 0.0
+
+[node name="Fall" type="Node" parent="." node_paths=PackedStringArray("jump_state", "move_state")]
+script = ExtResource("8_q24pu")
+jump_state = NodePath("../Jump")
+move_state = NodePath("../Run")
+rotation_weight = 0.025
+animation_name = &"Fall"
+time_until_switch = 0.01
+
+[node name="Death" type="Node" parent="."]
+script = ExtResource("9_mism5")
+animation_name = &""
+time_until_switch = 0.0

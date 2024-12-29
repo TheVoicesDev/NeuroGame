@@ -3,7 +3,7 @@ class_name FighterState
 extends CharacterState
 
 @export var idle_state : CharacterState
-@export var retain_ending_position : bool = true
+@export var dodge_state : StringName
 
 func begin(_state : Node, _last_state : Node):
 	if _state != self:
@@ -19,7 +19,12 @@ func begin(_state : Node, _last_state : Node):
 
 func state_process(_delta : float):
 	var ctrl : StateController = move_set.Controller
-	var chara : FantomeCharacter = ctrl.Character
+	var chara : DokiCharacter = ctrl.Character
+	
+	if chara.AttemptDodge and not dodge_state.is_empty():
+		ctrl.SwitchState(dodge_state)
+		return
+	
 	var body_anim : AnimationPlayer = chara.BodyAnimator
 	
 	chara.quaternion = chara.quaternion * body_anim.get_root_motion_rotation()

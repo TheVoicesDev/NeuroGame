@@ -60,7 +60,7 @@ bind/13/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15625, -0.10625, -0.016
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vkqes"]
 radius = 0.6
-height = 2.33414
+height = 1.86181
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ff7of"]
 size = Vector3(0.989349, 0.96994, 0.915955)
@@ -97,7 +97,7 @@ _data = {
 &"RESET": ExtResource("12_uvah1")
 }
 
-[node name="Neuro2" type="CharacterBody3D" node_paths=PackedStringArray("VisualReference", "HitBox", "SkeletonReference", "StateController", "GravityController", "BodyAnimator")]
+[node name="Neuro" type="CharacterBody3D" node_paths=PackedStringArray("VisualReference", "HitBox", "SkeletonReference", "StateController", "GravityController", "BodyAnimator")]
 collision_layer = 2
 collision_mask = 3
 floor_constant_speed = true
@@ -113,7 +113,7 @@ BodyAnimator = NodePath("BodyAnimator")
 metadata/_custom_type_script = ExtResource("1_y8emd")
 
 [node name="Skeleton3D" type="Skeleton3D" parent="."]
-bones/0/name = "Center_2"
+bones/0/name = "Center"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 bones/0/enabled = true
@@ -217,7 +217,7 @@ mesh = ExtResource("1_vkqes")
 skin = SubResource("Skin_y67wc")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.167, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_vkqes")
 
 [node name="StateController" type="Node" parent="." node_paths=PackedStringArray("Character", "MoveSets")]

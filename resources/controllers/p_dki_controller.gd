@@ -10,3 +10,4 @@ func _physics_process(delta : float):
 
 	player.AttemptCombo = Input.is_action_just_pressed("fight_rush")
 	player.AttemptFinisher = Input.is_action_just_pressed("fight_fin")
+	player.AttemptDodge = Input.is_action_just_pressed("adv_jump")

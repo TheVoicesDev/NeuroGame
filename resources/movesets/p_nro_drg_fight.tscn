@@ -51,10 +51,10 @@ func state_process(_delta : float):
 		set_hit_instigating(&\"ThighL\", true)
 		set_hit_instigating(&\"ShinL\", true)
 		set_hit_instigating(&\"FootL\", true)
-		hit_box.HealthAddition = -15
+		hit_box.HealthAddition = -10
 		stage = 2
 		
-	if stage == 2:
+	if stage == 2 and body_anim.current_animation_position >= 0.35:
 		if chara.AttemptCombo:
 			ctrl.SwitchState(\"Cmb02\")
 		
@@ -122,10 +122,10 @@ func state_process(_delta : float):
 		set_hit_instigating(&\"ThighR\", true)
 		set_hit_instigating(&\"ShinR\", true)
 		set_hit_instigating(&\"FootR\", true)
-		hit_box.HealthAddition = -15
+		hit_box.HealthAddition = -10
 		stage = 2
 		
-	if (stage == 2 and chara.AttemptCombo):
+	if (stage == 2 and chara.AttemptCombo and body_anim.current_animation_position >= 0.3667):
 		ctrl.SwitchState(\"Cmb03\")
 		
 	if (body_anim.current_animation_position >= 0.5 and stage == 2):
@@ -192,10 +192,10 @@ func state_process(_delta : float):
 		set_hit_instigating(&\"ThighL\", true)
 		set_hit_instigating(&\"ShinL\", true)
 		set_hit_instigating(&\"FootL\", true)
-		hit_box.HealthAddition = -15
+		hit_box.HealthAddition = -10
 		stage = 2
 		
-	if (stage == 2 and chara.AttemptCombo):
+	if (stage == 2 and chara.AttemptCombo and body_anim.current_animation_position >= 0.3667):
 		ctrl.SwitchState(\"Cmb04\")
 		
 	if (body_anim.current_animation_position >= 0.5 and stage == 2):
@@ -262,10 +262,10 @@ func state_process(_delta : float):
 		set_hit_instigating(&\"ThighR\", true)
 		set_hit_instigating(&\"ShinR\", true)
 		set_hit_instigating(&\"FootR\", true)
-		hit_box.HealthAddition = -15
+		hit_box.HealthAddition = -10
 		stage = 2
 		
-	if (stage == 2 and chara.AttemptCombo):
+	if (stage == 2 and chara.AttemptCombo and body_anim.current_animation_position >= 0.3667):
 		ctrl.SwitchState(\"CmbLoop\")
 		
 	if (body_anim.current_animation_position >= 0.5 and stage == 2):
@@ -332,10 +332,10 @@ func state_process(_delta : float):
 		set_hit_instigating(&\"ThighL\", true)
 		set_hit_instigating(&\"ShinL\", true)
 		set_hit_instigating(&\"FootL\", true)
-		hit_box.HealthAddition = -15
+		hit_box.HealthAddition = -10
 		stage = 2
 		
-	if (stage == 2 and chara.AttemptCombo):
+	if (stage == 2 and chara.AttemptCombo and body_anim.current_animation_position >= 0.35):
 		ctrl.SwitchState(\"Cmb02\")
 		
 	if (body_anim.current_animation_position >= 0.5 and stage == 3):
@@ -375,29 +375,34 @@ metadata/_custom_type_script = ExtResource("3_xcmjp")
 [node name="Cmb01" type="Node" parent="." node_paths=PackedStringArray("idle_state")]
 script = SubResource("GDScript_phpjy")
 idle_state = NodePath("../Stance")
+dodge_state = &"Dive"
 animation_name = &"CMB_01"
 time_until_switch = 0.0
 
 [node name="Cmb02" type="Node" parent="." node_paths=PackedStringArray("idle_state")]
 script = SubResource("GDScript_0cjli")
 idle_state = NodePath("../Stance")
+dodge_state = &"Dive"
 animation_name = &"CMB_02"
 time_until_switch = 0.0
 
 [node name="Cmb03" type="Node" parent="." node_paths=PackedStringArray("idle_state")]
 script = SubResource("GDScript_gcs4b")
 idle_state = NodePath("../Stance")
+dodge_state = &"Dive"
 animation_name = &"CMB_03"
 time_until_switch = 0.0
 
 [node name="Cmb04" type="Node" parent="." node_paths=PackedStringArray("idle_state")]
 script = SubResource("GDScript_xi1c2")
 idle_state = NodePath("../Stance")
+dodge_state = &"Dive"
 animation_name = &"CMB_04"
 time_until_switch = 0.0
 
 [node name="CmbLoop" type="Node" parent="." node_paths=PackedStringArray("idle_state")]
 script = SubResource("GDScript_3qqky")
 idle_state = NodePath("../Stance")
+dodge_state = &"Dive"
 animation_name = &"CMB_LOOP"
 time_until_switch = 0.0

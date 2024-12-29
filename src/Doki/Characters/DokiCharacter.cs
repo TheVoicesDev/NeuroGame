@@ -7,4 +7,5 @@ public partial class DokiCharacter : FantomeCharacter
 {
     [Export] public bool AttemptCombo = false;
     [Export] public bool AttemptFinisher = false;
+    [Export] public bool AttemptDodge = false;
 }

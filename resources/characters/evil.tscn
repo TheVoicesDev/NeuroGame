@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://nmyoh6gi32a1" path="res://src/Doki/Characters/DokiCharacter.cs" id="1_d26d2"]
 [ext_resource type="ArrayMesh" uid="uid://c6tlcam33vie8" path="res://assets/characters/evil/mesh.tres" id="2_d26d2"]
 [ext_resource type="Script" uid="uid://cejr36hrvg2su" path="res://src/Fantome/Characters/StateController.cs" id="3_iq8u8"]
-[ext_resource type="PackedScene" uid="uid://cawm252q17o71" path="res://resources/movesets/p_dki_adv.tscn" id="4_uwn5o"]
+[ext_resource type="PackedScene" uid="uid://rmla8lkseggb" path="res://resources/movesets/p_evl_adv.tscn" id="4_d26d2"]
 [ext_resource type="PackedScene" uid="uid://bmpmmsdgk3r5m" path="res://resources/movesets/p_nro_drg_fight.tscn" id="5_rjoru"]
 [ext_resource type="Script" uid="uid://c6ag3tltsf37b" path="res://scripts/animation/anim_process_default.gd" id="6_whv1a"]
 [ext_resource type="Script" uid="uid://3m3y5c71m8bq" path="res://src/Fantome/Characters/GravityController.cs" id="7_j7xh1"]
@@ -60,7 +60,7 @@ bind/13/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15625, -0.10625, -0.016
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vkqes"]
 radius = 0.6
-height = 2.33414
+height = 1.79243
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ff7of"]
 size = Vector3(0.989349, 0.96994, 0.915955)
@@ -97,13 +97,14 @@ _data = {
 &"RESET": ExtResource("11_frnim")
 }
 
-[node name="NeuroEvil" type="CharacterBody3D" node_paths=PackedStringArray("HitBox", "SkeletonReference", "StateController", "GravityController", "BodyAnimator")]
+[node name="NeuroEvil" type="CharacterBody3D" node_paths=PackedStringArray("VisualReference", "HitBox", "SkeletonReference", "StateController", "GravityController", "BodyAnimator")]
 collision_layer = 2
 collision_mask = 3
 floor_constant_speed = true
 floor_max_angle = 1.0472
 script = ExtResource("1_d26d2")
-Health = 100
+Health = 50
+VisualReference = NodePath("Skeleton3D/Mesh")
 HitBox = NodePath("Hitbox")
 SkeletonReference = NodePath("Skeleton3D")
 StateController = NodePath("StateController")
@@ -216,7 +217,7 @@ mesh = ExtResource("2_d26d2")
 skin = SubResource("Skin_k1js1")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.167, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.902371, 0)
 shape = SubResource("CapsuleShape3D_vkqes")
 
 [node name="StateController" type="Node" parent="." node_paths=PackedStringArray("Character", "MoveSets")]
@@ -225,7 +226,7 @@ Character = NodePath("..")
 MoveSets = [NodePath("Adventure"), NodePath("NeuroDragoon")]
 metadata/_custom_type_script = ExtResource("3_iq8u8")
 
-[node name="Adventure" parent="StateController" instance=ExtResource("4_uwn5o")]
+[node name="Adventure" parent="StateController" instance=ExtResource("4_d26d2")]
 
 [node name="NeuroDragoon" parent="StateController" instance=ExtResource("5_rjoru")]
 
@@ -484,7 +485,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000304639, -0.0425873, -0.
 shape = SubResource("BoxShape3D_vrbgy")
 
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("Character")]
-visible = false
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("10_dk4ym")

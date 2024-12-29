@@ -171,39 +171,3 @@ tracks/23/path = NodePath("Skeleton3D:LowerArmR")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = PackedFloat32Array(0, 1, -0.0154218, 0.353217, -0.580946, 0.733145, 0.0333333, 1, -0.00955703, 0.340097, -0.537696, 0.771444, 0.0666667, 1, 0.0296625, 0.327692, -0.33462, 0.883044, 0.1, 1, 0.062558, 0.337629, -0.11887, 0.931645, 0.133333, 1, 0.0780749, 0.380278, 0.0391775, 0.920738, 0.166667, 1, 0.0914713, 0.412601, 0.196161, 0.884825, 0.233333, 1, 0.0810797, 0.458343, 0.200679, 0.862018, 0.266667, 1, 0.078446, 0.469587, 0.201723, 0.855945, 0.5, 1, 0.0784461, 0.469587, 0.201723, 0.855945, 0.533333, 1, 0.0825928, 0.433544, 0.105637, 0.8911, 0.566667, 1, 0.0857662, 0.392391, 0.00830571, 0.915754, 0.6, 1, 0.078019, 0.36298, -0.0975547, 0.923386, 0.633333, 1, 0.0593435, 0.345181, -0.210542, 0.912688, 0.666667, 1, 0.0398641, 0.322707, -0.320678, 0.889627, 0.75, 1, -0.0154218, 0.353217, -0.580946, 0.733145)
-tracks/24/type = "value"
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/path = NodePath("Face/EyeR:animation")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [&"Eyes_AlertR", &"Eyes_DeterminedR", &"Eyes_AlertR"]
-}
-tracks/25/type = "value"
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/path = NodePath("Face/EyeL:animation")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/keys = {
-"times": PackedFloat32Array(0, 0.133333, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [&"Eyes_AlertL", &"Eyes_DeterminedL", &"Eyes_AlertL"]
-}
-tracks/26/type = "value"
-tracks/26/imported = false
-tracks/26/enabled = true
-tracks/26/path = NodePath("Face/Mouth:animation")
-tracks/26/interp = 1
-tracks/26/loop_wrap = true
-tracks/26/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Mouth_Alert"]
-}

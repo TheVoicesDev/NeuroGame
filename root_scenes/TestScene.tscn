@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7eit64srxqyn"]
+[gd_scene load_steps=16 format=3 uid="uid://c7eit64srxqyn"]
 
 [ext_resource type="Script" uid="uid://mda2k63s2k1t" path="res://src/Fantome/FantomeGame.cs" id="1_us1gy"]
 [ext_resource type="PackedScene" uid="uid://bstf3vdm5gl8" path="res://resources/characters/neuro.tscn" id="2_452qw"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dvcusdvciv5vp" path="res://resources/characters/stitch.tscn" id="3_f0sku"]
 [ext_resource type="Script" uid="uid://37ogukc40u0f" path="res://resources/controllers/p_dki_controller.gd" id="3_f65a5"]
 [ext_resource type="Script" uid="uid://cuswq15nlq3d0" path="res://src/Fantome/Objects/CameraController.cs" id="4_t0d8v"]
+[ext_resource type="Script" uid="uid://b2ogo4cm2doc0" path="res://resources/controllers/p_evil_controller.gd" id="5_wnind"]
+[ext_resource type="PackedScene" uid="uid://shcf7n4clcm1" path="res://resources/characters/evil.tscn" id="6_vpowm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_x631f"]
 size = Vector3(9, 0.5, 9)
@@ -21,6 +23,9 @@ albedo_texture = SubResource("GradientTexture2D_xgwsn")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_2d62g"]
 size = Vector3(9, 0.5, 9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wnind"]
+size = Vector3(25.7714, 5.04834, 48.7985)
 
 [sub_resource type="SphereMesh" id="SphereMesh_f0sku"]
 
@@ -51,6 +56,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.87472, 8.98629, -0.460177)
 Health = 0
 
 [node name="Stitch" parent="." instance=ExtResource("3_f0sku")]
+
+[node name="KillZone" type="Area3D" parent="." node_paths=PackedStringArray("character")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6149, 0, 0)
+collision_layer = 0
+collision_mask = 2
+priority = -2
+script = ExtResource("5_wnind")
+character = NodePath("NeuroEvil")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.79251, 2.524, 0.453461)
+shape = SubResource("BoxShape3D_wnind")
+
+[node name="NeuroEvil" parent="KillZone" instance=ExtResource("6_vpowm")]
 
 [node name="PlayerController" type="Node" parent="."]
 script = ExtResource("3_f65a5")
