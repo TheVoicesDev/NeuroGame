@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://cq67dc0jgj1go"]
+
+[ext_resource type="Script" uid="uid://mda2k63s2k1t" path="res://src/Fantome/FantomeGame.cs" id="1_qu7nh"]
+[ext_resource type="Script" uid="uid://37ogukc40u0f" path="res://resources/controllers/p_dki_controller.gd" id="2_3emq8"]
+[ext_resource type="PackedScene" uid="uid://bstf3vdm5gl8" path="res://resources/characters/neuro.tscn" id="2_l85so"]
+[ext_resource type="PackedScene" uid="uid://dg876kb8h1r0c" path="res://resources/levels/GameLevel.tscn" id="3_3emq8"]
+[ext_resource type="Script" uid="uid://cuswq15nlq3d0" path="res://src/Fantome/Objects/CameraController.cs" id="5_2clfi"]
+
+[node name="FantomeGame" type="Node3D" node_paths=PackedStringArray("Player", "Focus", "Camera")]
+script = ExtResource("1_qu7nh")
+Player = NodePath("Neuro")
+Focus = NodePath("Neuro")
+Camera = NodePath("CameraController")
+metadata/_custom_type_script = ExtResource("1_qu7nh")
+
+[node name="PlayerController" type="Node" parent="."]
+script = ExtResource("2_3emq8")
+
+[node name="Neuro" parent="." instance=ExtResource("2_l85so")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0139809, 10.8176, 0.000524998)
+
+[node name="GameLevel" parent="." instance=ExtResource("3_3emq8")]
+
+[node name="CameraController" type="Node3D" parent="." node_paths=PackedStringArray("SpringArm", "Camera")]
+process_physics_priority = 1
+script = ExtResource("5_2clfi")
+OffsetPosition = Vector3(0, 1.5, 0)
+TargetZ = 5.0
+PositionUpdate = 0
+FollowPositionWeight = 0.5
+FollowRotationWeight = 0.2
+FollowZWeight = 0.3
+SpringArm = NodePath("SpringArm3D")
+Camera = NodePath("SpringArm3D/Camera3D")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraController"]
+
+[node name="Camera3D" type="Camera3D" parent="CameraController/SpringArm3D"]
+current = true

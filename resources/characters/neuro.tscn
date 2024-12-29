@@ -240,7 +240,7 @@ state_controller = NodePath("../StateController")
 
 [node name="GravityController" type="Node3D" parent="." node_paths=PackedStringArray("Character")]
 script = ExtResource("8_vrbgy")
-Mass = 20.0
+Mass = 50.0
 Character = NodePath("..")
 
 [node name="Hitbox" type="Node3D" parent="." node_paths=PackedStringArray("Character")]
