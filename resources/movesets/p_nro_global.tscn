@@ -26,8 +26,6 @@ func begin(_state : Node, _last_state : Node) -> void:
 	if _state != self:
 		return
 	
-	print(\"BEGAN\")
-	
 	var ctrl : StateController = move_set.Controller
 	var chara : FantomeCharacter = ctrl.Character
 	chara.BodyAnimator.stop()
@@ -38,9 +36,7 @@ func state_process(_delta : float) -> void:
 	var ctrl : StateController = move_set.Controller
 	var chara : DokiCharacter = ctrl.Character
 	
-	#print(\"ACTIVE\")
 	if not chara.BodyAnimator.current_animation.ends_with(\"Death\"):
-		#print(\"FUNK YOU\")
 		ctrl.PlayAnimation(animation_name, -1.0, 1.0, false)
 "
 
