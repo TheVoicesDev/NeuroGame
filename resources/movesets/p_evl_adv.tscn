@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://rmla8lkseggb"]
+[gd_scene load_steps=9 format=3 uid="uid://rmla8lkseggb"]
 
 [ext_resource type="Script" uid="uid://ce701rqav7xe0" path="res://src/Fantome/Characters/MoveSet.cs" id="1_8sp5s"]
 [ext_resource type="AnimationLibrary" uid="uid://ghbyeyhsptq7" path="res://resources/movesets/p_dki_adv.tres" id="2_vasmt"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://p8fpmia44geh" path="res://scripts/states/jump_state.gd" id="6_pt8vc"]
 [ext_resource type="Script" uid="uid://cgav0t0cbeivs" path="res://scripts/states/slow_state.gd" id="7_0wr6g"]
 [ext_resource type="Script" uid="uid://dhkwj2acdvd3n" path="res://scripts/states/fall_state.gd" id="8_q24pu"]
-[ext_resource type="Script" uid="uid://wwm5ojw3np6c" path="res://scripts/states/death_state.gd" id="9_mism5"]
 
 [node name="Adventure" type="Node" node_paths=PackedStringArray("DefaultState")]
 script = ExtResource("1_8sp5s")
@@ -63,8 +62,3 @@ move_state = NodePath("../Run")
 rotation_weight = 0.025
 animation_name = &"Fall"
 time_until_switch = 0.01
-
-[node name="Death" type="Node" parent="."]
-script = ExtResource("9_mism5")
-animation_name = &""
-time_until_switch = 0.0

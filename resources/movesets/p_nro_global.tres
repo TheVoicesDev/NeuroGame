@@ -1,0 +1,8 @@
+[gd_resource type="AnimationLibrary" load_steps=2 format=3 uid="uid://dfmnvtu78v33t"]
+
+[ext_resource type="Animation" path="res://resources/animations/p_nro_death.tres" id="1_s8r3o"]
+
+[resource]
+_data = {
+&"Death": ExtResource("1_s8r3o")
+}

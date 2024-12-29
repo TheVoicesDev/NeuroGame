@@ -45,8 +45,8 @@ public partial class FantomeCharacter : CharacterBody3D
 		if (damage < 0)
 			return;
 		
+		Health -= damage; // BAD FIX LATER
 		StateController.EmitSignal(StateController.SignalName.Damaged, damage, instigator);
-		Health -= damage;
 	}
 
 	public void Heal(int health, FantomeCharacter instigator)
@@ -54,7 +54,7 @@ public partial class FantomeCharacter : CharacterBody3D
 		if (health < 0)
 			return;
 		
+		Health += health; // SAME HERE
 		StateController.EmitSignal(StateController.SignalName.Healed, health, instigator);
-		Health += health;
 	}
 }

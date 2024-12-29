@@ -6,16 +6,10 @@ func begin(_state : Node, _last_state : Node) -> void:
 	if _state != self:
 		return
 	
+	super(_state, _last_state)
+	
 	var ctrl : StateController = move_set.Controller
-	var chara : FantomeCharacter = ctrl.Character
-	var skele : Skeleton3D = chara.SkeletonReference
-	
-	active = true
-	time_passed = 0.0
-	
 	ctrl.ManualSwitching = true
-	chara.BodyAnimator.stop()
-	skele.physical_bones_start_simulation()
 
 func allow_switch() -> bool:
 	var state_ctrl : StateController = move_set.Controller
@@ -31,6 +25,5 @@ func end(_current_state : Node, _next_state : Node):
 	var ctrl : StateController = move_set.Controller
 	var chara : FantomeCharacter = ctrl.Character
 	var skele : Skeleton3D = chara.SkeletonReference
-	skele.physical_bones_stop_simulation()
 		
 	super(_current_state, _next_state)

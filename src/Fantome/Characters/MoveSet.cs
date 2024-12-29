@@ -11,6 +11,8 @@ public partial class MoveSet : Node
 
     [Export] public Node DefaultState;
 
+    [Export] public Node DeathState;
+
     [Export] public AnimationLibrary Animations;
 
     [Signal] public delegate void BeginStateEventHandler(Node currentState, Node lastState);

@@ -66,6 +66,11 @@ public partial class StateController : Node
         EmitSignal(SignalName.ProcessAnimation, animName, customBlend, customSpeed, fromEnd);
     }
 
+    public void CallDeath()
+    {
+        SwitchState(MoveSets.Last(x => x.DeathState != null).DeathState.Name);
+    }
+
     /// <summary>
     /// Gets the <see cref="Node"/> that matches the name of the string provided.
     /// Movesets with a higher index will be prioritized.

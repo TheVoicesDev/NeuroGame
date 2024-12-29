@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://shcf7n4clcm1"]
+[gd_scene load_steps=26 format=3 uid="uid://cahvjoueri8t"]
 
 [ext_resource type="Script" uid="uid://nmyoh6gi32a1" path="res://src/Doki/Characters/DokiCharacter.cs" id="1_d26d2"]
-[ext_resource type="ArrayMesh" uid="uid://c6tlcam33vie8" path="res://assets/characters/evil/mesh.tres" id="2_d26d2"]
+[ext_resource type="ArrayMesh" uid="uid://c6tlcam33vie8" path="res://assets/characters/evil/mesh.tres" id="2_76r1r"]
 [ext_resource type="Script" uid="uid://cejr36hrvg2su" path="res://src/Fantome/Characters/StateController.cs" id="3_iq8u8"]
-[ext_resource type="PackedScene" uid="uid://rmla8lkseggb" path="res://resources/movesets/p_evl_adv.tscn" id="4_d26d2"]
+[ext_resource type="PackedScene" uid="uid://ccedq5hm5kr5x" path="res://resources/movesets/p_nro_global.tscn" id="4_76r1r"]
+[ext_resource type="PackedScene" uid="uid://rmla8lkseggb" path="res://resources/movesets/p_evl_adv.tscn" id="5_76r1r"]
 [ext_resource type="PackedScene" uid="uid://bmpmmsdgk3r5m" path="res://resources/movesets/p_nro_drg_fight.tscn" id="5_rjoru"]
 [ext_resource type="Script" uid="uid://c6ag3tltsf37b" path="res://scripts/animation/anim_process_default.gd" id="6_whv1a"]
 [ext_resource type="Script" uid="uid://3m3y5c71m8bq" path="res://src/Fantome/Characters/GravityController.cs" id="7_j7xh1"]
@@ -12,7 +13,7 @@
 [ext_resource type="Script" uid="uid://7egrfoh1lpd3" path="res://src/Fantome/Characters/HurtBox.cs" id="10_dk4ym"]
 [ext_resource type="Animation" uid="uid://b2xn1tx0pis8o" path="res://resources/animations/p_dki_reset.tres" id="11_frnim"]
 
-[sub_resource type="Skin" id="Skin_k1js1"]
+[sub_resource type="Skin" id="Skin_y67wc"]
 resource_name = "Skin"
 bind_count = 14
 bind/0/name = &"Center"
@@ -60,7 +61,7 @@ bind/13/pose = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.15625, -0.10625, -0.016
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vkqes"]
 radius = 0.6
-height = 1.79243
+height = 1.86181
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ff7of"]
 size = Vector3(0.989349, 0.96994, 0.915955)
@@ -213,22 +214,27 @@ bones/13/rotation = Quaternion(0, 0, 0, 1)
 bones/13/scale = Vector3(1, 1, 1)
 
 [node name="Mesh" type="MeshInstance3D" parent="Skeleton3D"]
-mesh = ExtResource("2_d26d2")
-skin = SubResource("Skin_k1js1")
+mesh = ExtResource("2_76r1r")
+skin = SubResource("Skin_y67wc")
 
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.902371, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_vkqes")
 
 [node name="StateController" type="Node" parent="." node_paths=PackedStringArray("Character", "MoveSets")]
 script = ExtResource("3_iq8u8")
 Character = NodePath("..")
-MoveSets = [NodePath("Adventure"), NodePath("NeuroDragoon")]
+MoveSets = [NodePath("NeuroGlobal"), NodePath("Adventure"), NodePath("NeuroDragoon")]
 metadata/_custom_type_script = ExtResource("3_iq8u8")
 
-[node name="Adventure" parent="StateController" instance=ExtResource("4_d26d2")]
+[node name="NeuroGlobal" parent="StateController" node_paths=PackedStringArray("Controller") instance=ExtResource("4_76r1r")]
+Controller = NodePath("..")
 
-[node name="NeuroDragoon" parent="StateController" instance=ExtResource("5_rjoru")]
+[node name="Adventure" parent="StateController" node_paths=PackedStringArray("Controller") instance=ExtResource("5_76r1r")]
+Controller = NodePath("..")
+
+[node name="NeuroDragoon" parent="StateController" node_paths=PackedStringArray("Controller") instance=ExtResource("5_rjoru")]
+Controller = NodePath("..")
 
 [node name="DefaultAnimationProcessor" type="Node" parent="." node_paths=PackedStringArray("state_controller")]
 script = ExtResource("6_whv1a")
@@ -485,6 +491,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000304639, -0.0425873, -0.
 shape = SubResource("BoxShape3D_vrbgy")
 
 [node name="Hurtbox" type="Area3D" parent="." node_paths=PackedStringArray("Character")]
+visible = false
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("10_dk4ym")

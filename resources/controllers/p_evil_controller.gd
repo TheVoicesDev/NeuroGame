@@ -18,6 +18,12 @@ func _ready() -> void:
 	add_child(timer)
 
 func _physics_process(delta: float) -> void:
+	if character.Health <= 0:
+		character.MoveStrength = 0
+		character.AttemptCombo = false
+		timer.stop()
+		return
+	
 	if not is_intersecting:
 		character.MoveStrength = 0
 		return

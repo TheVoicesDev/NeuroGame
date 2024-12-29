@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://37ogukc40u0f" path="res://resources/controllers/p_dki_controller.gd" id="3_f65a5"]
 [ext_resource type="Script" uid="uid://cuswq15nlq3d0" path="res://src/Fantome/Objects/CameraController.cs" id="4_t0d8v"]
 [ext_resource type="Script" uid="uid://b2ogo4cm2doc0" path="res://resources/controllers/p_evil_controller.gd" id="5_wnind"]
-[ext_resource type="PackedScene" uid="uid://shcf7n4clcm1" path="res://resources/characters/evil.tscn" id="6_vpowm"]
+[ext_resource type="PackedScene" uid="uid://cahvjoueri8t" path="res://resources/characters/evil.tscn" id="6_vpowm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_x631f"]
 size = Vector3(9, 0.5, 9)
@@ -65,11 +65,11 @@ priority = -2
 script = ExtResource("5_wnind")
 character = NodePath("NeuroEvil")
 
+[node name="NeuroEvil" parent="KillZone" instance=ExtResource("6_vpowm")]
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillZone"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.79251, 2.524, 0.453461)
 shape = SubResource("BoxShape3D_wnind")
-
-[node name="NeuroEvil" parent="KillZone" instance=ExtResource("6_vpowm")]
 
 [node name="PlayerController" type="Node" parent="."]
 script = ExtResource("3_f65a5")

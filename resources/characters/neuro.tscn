@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://bstf3vdm5gl8"]
+[gd_scene load_steps=26 format=3 uid="uid://bstf3vdm5gl8"]
 
 [ext_resource type="ArrayMesh" uid="uid://bkf7y8kbh1xtp" path="res://assets/characters/neuro/mesh.tres" id="1_vkqes"]
 [ext_resource type="Script" uid="uid://nmyoh6gi32a1" path="res://src/Doki/Characters/DokiCharacter.cs" id="1_y8emd"]
 [ext_resource type="Script" uid="uid://cejr36hrvg2su" path="res://src/Fantome/Characters/StateController.cs" id="4_jtguj"]
+[ext_resource type="PackedScene" uid="uid://ccedq5hm5kr5x" path="res://resources/movesets/p_nro_global.tscn" id="4_y8emd"]
 [ext_resource type="PackedScene" uid="uid://cawm252q17o71" path="res://resources/movesets/p_dki_adv.tscn" id="5_fieml"]
 [ext_resource type="PackedScene" uid="uid://bmpmmsdgk3r5m" path="res://resources/movesets/p_nro_drg_fight.tscn" id="5_y76sy"]
 [ext_resource type="Script" uid="uid://c6ag3tltsf37b" path="res://scripts/animation/anim_process_default.gd" id="7_nua4b"]
@@ -223,8 +224,11 @@ shape = SubResource("CapsuleShape3D_vkqes")
 [node name="StateController" type="Node" parent="." node_paths=PackedStringArray("Character", "MoveSets")]
 script = ExtResource("4_jtguj")
 Character = NodePath("..")
-MoveSets = [NodePath("Adventure"), NodePath("NeuroDragoon")]
+MoveSets = [NodePath("NeuroGlobal"), NodePath("Adventure"), NodePath("NeuroDragoon")]
 metadata/_custom_type_script = ExtResource("4_jtguj")
+
+[node name="NeuroGlobal" parent="StateController" node_paths=PackedStringArray("Controller") instance=ExtResource("4_y8emd")]
+Controller = NodePath("..")
 
 [node name="Adventure" parent="StateController" instance=ExtResource("5_fieml")]
 

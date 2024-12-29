@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccedq5hm5kr5x"]
+
+[ext_resource type="Script" uid="uid://ce701rqav7xe0" path="res://src/Fantome/Characters/MoveSet.cs" id="1_dnw3x"]
+[ext_resource type="Script" uid="uid://wwm5ojw3np6c" path="res://scripts/states/death_state.gd" id="2_0prcc"]
+[ext_resource type="AnimationLibrary" uid="uid://dfmnvtu78v33t" path="res://resources/movesets/p_nro_global.tres" id="2_1w35v"]
+
+[sub_resource type="GDScript" id="GDScript_1w35v"]
+resource_name = "Death"
+script/source = "extends DeathState
+
+func _ready() -> void:
+	super._ready()
+	
+	var ctrl : StateController = move_set.Controller
+	ctrl.Damaged.connect(on_damaged)
+
+func on_damaged(health_loss : int, instigator : FantomeCharacter) -> void:
+	var ctrl : StateController = move_set.Controller
+	var chara : FantomeCharacter = ctrl.Character
+	if chara.Health > 0:
+		return
+	
+	ctrl.CallDeath()
+	
+func begin(_state : Node, _last_state : Node) -> void:
+	if _state != self:
+		return
+	
+	print(\"BEGAN\")
+	
+	var ctrl : StateController = move_set.Controller
+	var chara : FantomeCharacter = ctrl.Character
+	chara.BodyAnimator.stop()
+	
+	super(_state, _last_state)
+
+func state_process(_delta : float) -> void:
+	var ctrl : StateController = move_set.Controller
+	var chara : DokiCharacter = ctrl.Character
+	
+	#print(\"ACTIVE\")
+	if not chara.BodyAnimator.current_animation.ends_with(\"Death\"):
+		#print(\"FUNK YOU\")
+		ctrl.PlayAnimation(animation_name, -1.0, 1.0, false)
+"
+
+[node name="NeuroGlobal" type="Node" node_paths=PackedStringArray("DefaultState", "DeathState")]
+script = ExtResource("1_dnw3x")
+DefaultState = NodePath("Death")
+DeathState = NodePath("Death")
+Animations = ExtResource("2_1w35v")
+metadata/_custom_type_script = ExtResource("1_dnw3x")
+
+[node name="Death" type="Node" parent="."]
+script = SubResource("GDScript_1w35v")
+animation_name = &"Death"
+time_until_switch = 0.0
+metadata/_custom_type_script = ExtResource("2_0prcc")
