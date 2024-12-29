@@ -36,8 +36,8 @@ public partial class NeuroItemObject : Node3D
         Reparent(game.Player);
 
         Tween xTween = CreateTween().SetParallel();
-        xTween.TweenProperty(this, "position:x", 0, 0.45);
-        xTween.TweenProperty(this, "position:z", 0, 0.45);
+        xTween.TweenProperty(this, "position:x", 0, 0.45).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Circ); 
+        xTween.TweenProperty(this, "position:z", 0, 0.45).SetEase(Tween.EaseType.Out).SetTrans(Tween.TransitionType.Circ); 
         xTween.Play();
 
         Tween yTween = CreateTween().SetParallel();;
