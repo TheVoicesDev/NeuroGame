@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://bstf3vdm5gl8"]
+[gd_scene load_steps=27 format=3 uid="uid://bstf3vdm5gl8"]
 
 [ext_resource type="ArrayMesh" uid="uid://bkf7y8kbh1xtp" path="res://assets/characters/neuro/mesh.tres" id="1_vkqes"]
 [ext_resource type="Script" uid="uid://nmyoh6gi32a1" path="res://src/Doki/Characters/DokiCharacter.cs" id="1_y8emd"]
+[ext_resource type="SpriteFrames" uid="uid://dgndttllgrrf6" path="res://assets/characters/neuro/faces/face.tres" id="4_6i41j"]
 [ext_resource type="Script" uid="uid://cejr36hrvg2su" path="res://src/Fantome/Characters/StateController.cs" id="4_jtguj"]
 [ext_resource type="PackedScene" uid="uid://ccedq5hm5kr5x" path="res://resources/movesets/p_nro_global.tscn" id="4_y8emd"]
 [ext_resource type="PackedScene" uid="uid://cawm252q17o71" path="res://resources/movesets/p_dki_adv.tscn" id="5_fieml"]
@@ -217,8 +218,78 @@ bones/13/scale = Vector3(1, 1, 1)
 mesh = ExtResource("1_vkqes")
 skin = SubResource("Skin_y67wc")
 
+[node name="Face" type="BoneAttachment3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0625, 0)
+bone_name = "Neck"
+bone_idx = 6
+use_external_skeleton = true
+external_skeleton = NodePath("../Skeleton3D")
+
+[node name="EyeL" type="AnimatedSprite3D" parent="Face"]
+transform = Transform3D(-0.926095, 0.0401386, -0.37515, -0.0361454, 0.980313, 0.194115, 0.375556, 0.193329, -0.906411, -0.254861, 0.523924, -0.391051)
+pixel_size = 0.0016
+double_sided = false
+alpha_cut = 2
+texture_filter = 2
+sprite_frames = ExtResource("4_6i41j")
+animation = &"L_Eye_Def"
+
+[node name="BrowL" type="AnimatedSprite3D" parent="Face"]
+transform = Transform3D(-0.860946, 0, -0.508696, 0, 1, 0, 0.508696, 0, -0.860946, -0.200764, 0.694015, -0.401422)
+pixel_size = 0.0016
+double_sided = false
+alpha_cut = 2
+texture_filter = 2
+sprite_frames = ExtResource("4_6i41j")
+animation = &"L_Brow_Def"
+
+[node name="BlushL" type="AnimatedSprite3D" parent="Face"]
+transform = Transform3D(-0.732721, 0, -0.680529, 0, 1, 0, 0.680529, 0, -0.732721, -0.374357, 0.288184, -0.349304)
+pixel_size = 0.0016
+double_sided = false
+alpha_cut = 2
+texture_filter = 2
+sprite_frames = ExtResource("4_6i41j")
+animation = &"L_Blush_Def"
+
+[node name="EyeR" type="AnimatedSprite3D" parent="Face"]
+transform = Transform3D(-0.920535, -0.108135, 0.375395, -0.0359458, 0.980296, 0.194234, -0.389002, 0.165306, -0.906285, 0.242928, 0.524, -0.391)
+pixel_size = 0.0016
+double_sided = false
+alpha_cut = 2
+texture_filter = 2
+sprite_frames = ExtResource("4_6i41j")
+animation = &"R_Eye_Def"
+
+[node name="BrowR" type="AnimatedSprite3D" parent="Face"]
+transform = Transform3D(-0.860742, 0, 0.509042, 0, 1, 0, -0.509042, 0, -0.860742, 0.201, 0.694, -0.401)
+pixel_size = 0.0016
+double_sided = false
+alpha_cut = 2
+texture_filter = 2
+sprite_frames = ExtResource("4_6i41j")
+animation = &"R_Brow_Def"
+
+[node name="BlushR" type="AnimatedSprite3D" parent="Face"]
+transform = Transform3D(-0.732543, 0, 0.680721, 0, 1, 0, -0.680721, 0, -0.732543, 0.374, 0.288, -0.349)
+pixel_size = 0.0016
+double_sided = false
+alpha_cut = 2
+texture_filter = 2
+sprite_frames = ExtResource("4_6i41j")
+animation = &"R_Blush_Def"
+
+[node name="Mouth" type="AnimatedSprite3D" parent="Face"]
+transform = Transform3D(-1, 2.0961e-15, -8.74228e-08, 2.88239e-08, 0.944083, -0.329707, 8.25344e-08, -0.329707, -0.944083, 0, 0.236709, -0.525191)
+pixel_size = 0.0016
+double_sided = false
+alpha_cut = 2
+texture_filter = 2
+sprite_frames = ExtResource("4_6i41j")
+animation = &"Mouth_Def"
+
 [node name="Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00621343, 1.00621, 0)
 shape = SubResource("CapsuleShape3D_vkqes")
 
 [node name="StateController" type="Node" parent="." node_paths=PackedStringArray("Character", "MoveSets")]

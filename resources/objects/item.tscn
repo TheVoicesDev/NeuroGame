@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://d247o6dhfmmx1"]
 
-[ext_resource type="Script" path="res://src/Neuro/NeuroItemObject.cs" id="1_wcky1"]
+[ext_resource type="Script" uid="uid://ywfek4hm4f4p" path="res://src/Neuro/NeuroItemObject.cs" id="1_wcky1"]
 [ext_resource type="Texture2D" uid="uid://bq1r4dyalxtdh" path="res://assets/items/cookie.png" id="2_7schl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7schl"]
