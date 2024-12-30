@@ -1,18 +1,18 @@
 [gd_scene load_steps=28 format=3 uid="uid://cahvjoueri8t"]
 
-[ext_resource type="Script" uid="uid://nmyoh6gi32a1" path="res://src/Doki/Characters/DokiCharacter.cs" id="1_d26d2"]
+[ext_resource type="Script" uid="uid://crvsei4vxev58" path="res://src/Doki/Characters/DokiCharacter.cs" id="1_d26d2"]
 [ext_resource type="ArrayMesh" uid="uid://c6tlcam33vie8" path="res://assets/characters/evil/mesh.tres" id="2_76r1r"]
 [ext_resource type="AudioStream" uid="uid://c5ov01bgpr2wq" path="res://resources/audio/sfx/hit.wav" id="2_uwn5o"]
-[ext_resource type="Script" uid="uid://cejr36hrvg2su" path="res://src/Fantome/Characters/StateController.cs" id="3_iq8u8"]
+[ext_resource type="Script" uid="uid://dlw8aw0e0nahh" path="res://src/Fantome/Characters/StateController.cs" id="3_iq8u8"]
 [ext_resource type="SpriteFrames" uid="uid://vovindxy8oqx" path="res://assets/characters/evil/faces/face.tres" id="3_uwn5o"]
 [ext_resource type="PackedScene" uid="uid://ccedq5hm5kr5x" path="res://resources/movesets/p_nro_global.tscn" id="4_76r1r"]
 [ext_resource type="PackedScene" uid="uid://rmla8lkseggb" path="res://resources/movesets/p_evl_adv.tscn" id="5_76r1r"]
 [ext_resource type="PackedScene" uid="uid://bmpmmsdgk3r5m" path="res://resources/movesets/p_nro_drg_fight.tscn" id="5_rjoru"]
-[ext_resource type="Script" uid="uid://c6ag3tltsf37b" path="res://scripts/animation/anim_process_default.gd" id="6_whv1a"]
-[ext_resource type="Script" uid="uid://3m3y5c71m8bq" path="res://src/Fantome/Characters/GravityController.cs" id="7_j7xh1"]
-[ext_resource type="Script" uid="uid://8gm1em25oh2t" path="res://src/Fantome/Characters/HitBox.cs" id="8_x4cqf"]
-[ext_resource type="Script" uid="uid://dt13b0ij4cuw4" path="res://src/Fantome/Characters/HitArea.cs" id="9_f0i2i"]
-[ext_resource type="Script" uid="uid://7egrfoh1lpd3" path="res://src/Fantome/Characters/HurtBox.cs" id="10_dk4ym"]
+[ext_resource type="Script" uid="uid://pnb4vigp5w4n" path="res://scripts/animation/anim_process_default.gd" id="6_whv1a"]
+[ext_resource type="Script" uid="uid://b03s1xafglai1" path="res://src/Fantome/Characters/GravityController.cs" id="7_j7xh1"]
+[ext_resource type="Script" uid="uid://dkmh57q4mapg3" path="res://src/Fantome/Characters/HitBox.cs" id="8_x4cqf"]
+[ext_resource type="Script" uid="uid://v71u52mttdfy" path="res://src/Fantome/Characters/HitArea.cs" id="9_f0i2i"]
+[ext_resource type="Script" uid="uid://j4bxxpd1s4bc" path="res://src/Fantome/Characters/HurtBox.cs" id="10_dk4ym"]
 [ext_resource type="Animation" uid="uid://b2xn1tx0pis8o" path="res://resources/animations/p_dki_reset.tres" id="11_frnim"]
 
 [sub_resource type="Skin" id="Skin_y67wc"]
@@ -106,8 +106,8 @@ collision_mask = 3
 floor_constant_speed = true
 floor_max_angle = 1.0472
 script = ExtResource("1_d26d2")
-Health = 50
-MaxHealth = 50
+Health = 70
+MaxHealth = 70
 HitSound = ExtResource("2_uwn5o")
 VisualReference = NodePath("Skeleton3D/Mesh")
 HitBox = NodePath("Hitbox")
