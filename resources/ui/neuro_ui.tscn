@@ -1,0 +1,84 @@
+[gd_scene load_steps=8 format=3 uid="uid://de7h73430nsvq"]
+
+[ext_resource type="Texture2D" uid="uid://5ob7ssqkvqtt" path="res://assets/ui/item_counter.png" id="1_ac73e"]
+[ext_resource type="Script" uid="uid://c0gmfss4b44cx" path="res://src/Neuro/NeuroUi.cs" id="1_ycw54"]
+[ext_resource type="FontFile" uid="uid://bhujgnbcoe3cf" path="res://resources/fonts/Nintendo-DS-BIOS.ttf" id="2_eagv3"]
+[ext_resource type="Texture2D" uid="uid://cjudo50m8njxj" path="res://assets/ui/health_icon.png" id="3_t60dm"]
+[ext_resource type="Texture2D" uid="uid://b8sgotoos0r7i" path="res://assets/ui/player_hp_bar_fill.png" id="4_dbv0q"]
+[ext_resource type="Texture2D" uid="uid://c6oxixnekeafg" path="res://assets/ui/player_hp_bar.png" id="5_ycw54"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t60dm"]
+font = ExtResource("2_eagv3")
+font_size = 64
+font_color = Color(0, 0, 0, 1)
+
+[node name="NeuroUI" type="Control" node_paths=PackedStringArray("ItemCounterLabel")]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ycw54")
+ItemCounterLabel = NodePath("Health/ItemCounter/Label")
+
+[node name="Health" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.075
+anchor_top = 0.1
+anchor_right = 0.075
+anchor_bottom = 0.1
+
+[node name="ItemCounter" type="Control" parent="Health"]
+anchors_preset = 0
+offset_right = 180.0
+offset_bottom = 151.0
+
+[node name="BG" type="TextureRect" parent="Health/ItemCounter"]
+layout_mode = 0
+offset_right = 180.0
+offset_bottom = 151.0
+texture = ExtResource("1_ac73e")
+
+[node name="Label" type="Label" parent="Health/ItemCounter"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.575
+anchor_right = 1.0
+anchor_bottom = 0.6
+offset_top = -24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0/7"
+label_settings = SubResource("LabelSettings_t60dm")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthIcon" type="TextureRect" parent="Health"]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 30.0
+offset_right = 233.0
+offset_bottom = 70.0
+texture = ExtResource("3_t60dm")
+
+[node name="Bar" type="Control" parent="Health"]
+anchors_preset = 0
+offset_left = 231.0
+offset_top = 29.0
+offset_right = 271.0
+offset_bottom = 69.0
+
+[node name="Fill" type="TextureRect" parent="Health/Bar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_dbv0q")
+
+[node name="Border" type="TextureRect" parent="Health/Bar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_ycw54")

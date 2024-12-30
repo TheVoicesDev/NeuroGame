@@ -7,11 +7,12 @@
 [ext_resource type="PackedScene" uid="uid://bstf3vdm5gl8" path="res://resources/characters/neuro.tscn" id="3_1wfgg"]
 [ext_resource type="PackedScene" uid="uid://dg876kb8h1r0c" path="res://resources/levels/GameLevel.tscn" id="4_agm7f"]
 [ext_resource type="Script" uid="uid://cuswq15nlq3d0" path="res://src/Fantome/Objects/CameraController.cs" id="5_v7txb"]
-[ext_resource type="PackedScene" uid="uid://d247o6dhfmmx1" path="res://resources/objects/item.tscn" id="8_agm7f"]
+[ext_resource type="PackedScene" uid="uid://de7h73430nsvq" path="res://resources/ui/neuro_ui.tscn" id="8_agm7f"]
 
-[node name="NeuroGame" type="Node3D" node_paths=PackedStringArray("Player", "Focus", "Camera")]
+[node name="NeuroGame" type="Node3D" node_paths=PackedStringArray("Ui", "Player", "Focus", "Camera")]
 script = ExtResource("1_yw7mq")
 Items = ExtResource("2_1wfgg")
+Ui = NodePath("NeuroUI")
 Player = NodePath("Neuro")
 Focus = NodePath("Neuro")
 Camera = NodePath("CameraController")
@@ -42,26 +43,4 @@ Camera = NodePath("SpringArm3D/Camera3D")
 [node name="Camera3D" type="Camera3D" parent="CameraController/SpringArm3D"]
 current = true
 
-[node name="Item" parent="." instance=ExtResource("8_agm7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6594, 0.71, -0.308233)
-Id = &"calc"
-
-[node name="Item2" parent="." instance=ExtResource("8_agm7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4101, 1.97417, 2.59294)
-Id = &"calc"
-
-[node name="Item3" parent="." instance=ExtResource("8_agm7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4101, 1.97417, 0.849194)
-Id = &"calc"
-
-[node name="Item4" parent="." instance=ExtResource("8_agm7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4101, 1.97417, 4.32406)
-Id = &"calc"
-
-[node name="Item5" parent="." instance=ExtResource("8_agm7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4101, 1.97417, 6.48883)
-Id = &"calc"
-
-[node name="Item6" parent="." instance=ExtResource("8_agm7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4101, 1.97417, 6.48883)
-Id = &"calc"
+[node name="NeuroUI" parent="." instance=ExtResource("8_agm7f")]

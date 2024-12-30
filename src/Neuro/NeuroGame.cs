@@ -9,6 +9,17 @@ public partial class NeuroGame : FantomeGame
 
     [Export] public int ItemCount = 0;
 
+    [Export] public int MaxItems = 7;
+
+    [Export] public NeuroUi Ui;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        
+        Ui.UpdateCounter(ItemCount, MaxItems);
+    }
+
     public void GetItem(StringName id)
     {
         NeuroItemEntry entry = Items.Entries.FirstOrDefault(x => x.Id == id);
@@ -16,6 +27,6 @@ public partial class NeuroGame : FantomeGame
             return;
 
         ItemCount++;
-        
+        Ui.UpdateCounter(ItemCount, MaxItems);
     }
 }
