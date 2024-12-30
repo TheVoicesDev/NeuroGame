@@ -106,6 +106,7 @@ floor_constant_speed = true
 floor_max_angle = 1.0472
 script = ExtResource("1_d26d2")
 Health = 50
+MaxHealth = 50
 VisualReference = NodePath("Skeleton3D/Mesh")
 HitBox = NodePath("Hitbox")
 SkeletonReference = NodePath("Skeleton3D")

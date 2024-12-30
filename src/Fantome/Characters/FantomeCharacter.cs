@@ -7,6 +7,8 @@ public partial class FantomeCharacter : CharacterBody3D
 {
 	[Export] public int Health { get; set; } = 0;
 	
+	[Export] public int MaxHealth { get; set; } = 100;
+	
 	[Export] public float MoveStrength { get; set; } = 0f;
 	
 	[Export] public Vector3 LookDirection;

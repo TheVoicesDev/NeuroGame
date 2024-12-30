@@ -1,10 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://de7h73430nsvq"]
+[gd_scene load_steps=16 format=3 uid="uid://de7h73430nsvq"]
 
 [ext_resource type="Texture2D" uid="uid://5ob7ssqkvqtt" path="res://assets/ui/item_counter.png" id="1_ac73e"]
 [ext_resource type="Script" uid="uid://c0gmfss4b44cx" path="res://src/Neuro/NeuroUi.cs" id="1_ycw54"]
 [ext_resource type="FontFile" uid="uid://bhujgnbcoe3cf" path="res://resources/fonts/Nintendo-DS-BIOS.ttf" id="2_eagv3"]
 [ext_resource type="Texture2D" uid="uid://cjudo50m8njxj" path="res://assets/ui/health_icon.png" id="3_t60dm"]
 [ext_resource type="Texture2D" uid="uid://b8sgotoos0r7i" path="res://assets/ui/player_hp_bar_fill.png" id="4_dbv0q"]
+[ext_resource type="Shader" uid="uid://ce186wv8qk17f" path="res://resources/shaders/BarShader.gdshader" id="5_3p2nf"]
 [ext_resource type="Texture2D" uid="uid://c6oxixnekeafg" path="res://assets/ui/player_hp_bar.png" id="5_ycw54"]
 [ext_resource type="Texture2D" uid="uid://bq1r4dyalxtdh" path="res://assets/items/cookie.png" id="7_oj8pq"]
 
@@ -12,6 +13,12 @@
 font = ExtResource("2_eagv3")
 font_size = 64
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b82yp"]
+shader = ExtResource("5_3p2nf")
+shader_parameter/black = Color(0.990396, 0.616619, 1, 1)
+shader_parameter/white = Color(1, 1, 1, 0)
+shader_parameter/value = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_oj8pq"]
 font = ExtResource("2_eagv3")
@@ -60,7 +67,7 @@ _data = {
 &"open": SubResource("Animation_3p2nf")
 }
 
-[node name="NeuroUI" type="Control" node_paths=PackedStringArray("ItemCounterLabel", "Animator", "ItemIcon", "ItemName", "ItemDescription")]
+[node name="NeuroUI" type="Control" node_paths=PackedStringArray("ItemCounterLabel", "Animator", "ItemIcon", "ItemName", "ItemDescription", "HealthBarFill")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -74,6 +81,7 @@ Animator = NodePath("AnimationPlayer")
 ItemIcon = NodePath("ItemLayout/ItemInfo/HBoxContainer/Icon")
 ItemName = NodePath("ItemLayout/ItemInfo/HBoxContainer/VBoxContainer/Title")
 ItemDescription = NodePath("ItemLayout/ItemInfo/HBoxContainer/VBoxContainer/Desc")
+HealthBarFill = NodePath("Health/Bar/Fill")
 
 [node name="Health" type="Control" parent="."]
 layout_mode = 1
@@ -124,6 +132,7 @@ offset_right = 271.0
 offset_bottom = 69.0
 
 [node name="Fill" type="TextureRect" parent="Health/Bar"]
+material = SubResource("ShaderMaterial_b82yp")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
