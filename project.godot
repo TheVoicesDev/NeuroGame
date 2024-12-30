@@ -38,7 +38,7 @@ window/vsync/vsync_mode=0
 
 [dotnet]
 
-project/assembly_name="DokiThief"
+project/assembly_name="NeuroGame"
 
 [editor_plugins]
 
