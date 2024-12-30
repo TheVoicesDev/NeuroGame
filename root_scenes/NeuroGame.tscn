@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cq67dc0jgj1go"]
+[gd_scene load_steps=10 format=3 uid="uid://cq67dc0jgj1go"]
 
 [ext_resource type="Script" uid="uid://mda2k63s2k1t" path="res://src/Fantome/FantomeGame.cs" id="1_uyktw"]
 [ext_resource type="Script" uid="uid://b6gm7w0ksyxm3" path="res://src/Neuro/NeuroGame.cs" id="1_yw7mq"]
@@ -8,12 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://dg876kb8h1r0c" path="res://resources/levels/GameLevel.tscn" id="4_agm7f"]
 [ext_resource type="Script" uid="uid://cuswq15nlq3d0" path="res://src/Fantome/Objects/CameraController.cs" id="5_v7txb"]
 [ext_resource type="PackedScene" uid="uid://de7h73430nsvq" path="res://resources/ui/neuro_ui.tscn" id="8_agm7f"]
+[ext_resource type="Script" uid="uid://d1yqtew0wcnwk" path="res://scripts/game/death_handler.gd" id="9_v7txb"]
 
 [node name="NeuroGame" type="Node3D" node_paths=PackedStringArray("Ui", "Player", "Focus", "Camera")]
 script = ExtResource("1_yw7mq")
 Items = ExtResource("2_1wfgg")
 MaxItems = 8
-Ui = NodePath("NeuroUI")
+Ui = NodePath("UILayer/NeuroUI")
 Player = NodePath("Neuro")
 Focus = NodePath("Neuro")
 Camera = NodePath("CameraController")
@@ -44,4 +45,9 @@ Camera = NodePath("SpringArm3D/Camera3D")
 [node name="Camera3D" type="Camera3D" parent="CameraController/SpringArm3D"]
 current = true
 
-[node name="NeuroUI" parent="." instance=ExtResource("8_agm7f")]
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="NeuroUI" parent="UILayer" instance=ExtResource("8_agm7f")]
+
+[node name="DeathHandler" type="Node" parent="."]
+script = ExtResource("9_v7txb")

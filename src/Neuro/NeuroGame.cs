@@ -3,6 +3,7 @@ using Fantome;
 
 namespace Neuro;
 
+[GlobalClass]
 public partial class NeuroGame : FantomeGame
 {
     [Export] public NeuroItemDatabase Items;
@@ -19,7 +20,6 @@ public partial class NeuroGame : FantomeGame
     {
         base._Ready();
 
-        _lastHealth = Player.Health;
         Ui.UpdateCounter(ItemCount, MaxItems);
     }
 
