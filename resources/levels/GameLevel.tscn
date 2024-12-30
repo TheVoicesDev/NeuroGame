@@ -1,4 +1,4 @@
-[gd_scene load_steps=965 format=3 uid="uid://dg876kb8h1r0c"]
+[gd_scene load_steps=969 format=3 uid="uid://dg876kb8h1r0c"]
 
 [ext_resource type="AudioStream" uid="uid://l5w70n4wgstk" path="res://resources/audio/mus/level.ogg" id="1_4l3qt"]
 [ext_resource type="Script" uid="uid://b2ogo4cm2doc0" path="res://resources/controllers/p_evil_controller.gd" id="2_a482a"]
@@ -59,7 +59,7 @@ func _ready() -> void:
 	body_exited.connect(on_body_exited)
 
 func on_body_exited(body : Node3D):
-	if body is not FantomeCharacter:
+	if body is not FantomeCharacter or not monitoring:
 		return
 	
 	var chara : FantomeCharacter = body
@@ -85,6 +85,9 @@ func on_body_entered(body : Node3D) -> void:
 	var game : NeuroGame = FantomeEngine.GetGame()
 	if body != game.Player or transitioning:
 		return
+	
+	var death_area : Area3D = $\"../DeathZone\"
+	death_area.monitoring = false
 	
 	transitioning = true
 	TransitionManager.SwitchMainScene(\"neuro_transition\", \"res://root_scenes/EndingStory.tscn\")
@@ -9532,6 +9535,21 @@ face_vertex_data = {
 &"vertex_index": SubResource("Resource_75xf6")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ax0sw"]
+albedo_color = Color(0.662598, 0.26812, 5.77569e-07, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cm65r"]
+material = SubResource("StandardMaterial3D_ax0sw")
+flip_faces = true
+size = Vector3(500, 450, 900)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_258yc"]
+albedo_color = Color(0, 0, 0, 0.25098)
+
+[sub_resource type="BoxMesh" id="BoxMesh_juj2v"]
+material = SubResource("StandardMaterial3D_258yc")
+size = Vector3(900, 1, 900)
+
 [node name="GameLevel" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -9571,8 +9589,6 @@ character = NodePath("NeuroEvil")
 
 [node name="NeuroEvil" parent="EvilAreas/EvilArea2" instance=ExtResource("3_ylxds")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -5)
-Health = 70
-MaxHealth = 70
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EvilAreas/EvilArea2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0.5)
@@ -9588,8 +9604,6 @@ character = NodePath("NeuroEvil")
 
 [node name="NeuroEvil" parent="EvilAreas/EvilArea3" instance=ExtResource("3_ylxds")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12, 0, 0)
-Health = 70
-MaxHealth = 70
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EvilAreas/EvilArea3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3, 0)
@@ -9605,8 +9619,6 @@ character = NodePath("NeuroEvil")
 
 [node name="NeuroEvil" parent="EvilAreas/EvilArea4" instance=ExtResource("3_ylxds")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -7)
-Health = 70
-MaxHealth = 70
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EvilAreas/EvilArea4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1, -0.5)
@@ -9622,8 +9634,6 @@ character = NodePath("NeuroEvil")
 
 [node name="NeuroEvil" parent="EvilAreas/EvilArea5" instance=ExtResource("3_ylxds")]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 5, 0, 6)
-Health = 70
-MaxHealth = 70
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EvilAreas/EvilArea5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 2.5, 1)
@@ -9639,8 +9649,6 @@ character = NodePath("NeuroEvil")
 
 [node name="NeuroEvil" parent="EvilAreas/EvilArea6" instance=ExtResource("3_ylxds")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
-Health = 70
-MaxHealth = 70
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EvilAreas/EvilArea6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 1.5, 0.5)
@@ -9656,8 +9664,6 @@ character = NodePath("NeuroEvil")
 
 [node name="NeuroEvil" parent="EvilAreas/EvilArea7" instance=ExtResource("3_ylxds")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -5)
-Health = 70
-MaxHealth = 70
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EvilAreas/EvilArea7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 6)
@@ -9673,8 +9679,6 @@ character = NodePath("NeuroEvil")
 
 [node name="NeuroEvil" parent="EvilAreas/EvilArea8" instance=ExtResource("3_ylxds")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -5)
-Health = 70
-MaxHealth = 70
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="EvilAreas/EvilArea8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -9823,436 +9827,448 @@ font = ExtResource("7_cm65r")
 font_size = 500
 outline_size = 0
 
-[node name="block0" type="Node3D" parent="."]
+[node name="Blocks" type="Node3D" parent="."]
+
+[node name="block0" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_3366b")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_0" type="Node3D" parent="."]
+[node name="Block_0" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, -6, -2)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_mbw0q")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_1" type="Node3D" parent="."]
+[node name="Block_1" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -6, -2)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_0meh5")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_2" type="Node3D" parent="."]
+[node name="Block_2" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 15)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_52nho")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_3" type="Node3D" parent="."]
+[node name="Block_3" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 14.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_qu2ng")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_4" type="Node3D" parent="."]
+[node name="Block_4" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 14)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_bmnyf")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_5" type="Node3D" parent="."]
+[node name="Block_5" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 13.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_vqc3a")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_6" type="Node3D" parent="."]
+[node name="Block_6" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 13)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_grhmy")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_7" type="Node3D" parent="."]
+[node name="Block_7" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 12.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_t215r")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_8" type="Node3D" parent="."]
+[node name="Block_8" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 12)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_ru85n")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_9" type="Node3D" parent="."]
+[node name="Block_9" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 11.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_wqgb5")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_10" type="Node3D" parent="."]
+[node name="Block_10" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 11)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_dc5h3")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_11" type="Node3D" parent="."]
+[node name="Block_11" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 10.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_i8x3q")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_12" type="Node3D" parent="."]
+[node name="Block_12" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 10)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_jo1t5")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_13" type="Node3D" parent="."]
+[node name="Block_13" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 9.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_wuqjg")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_14" type="Node3D" parent="."]
+[node name="Block_14" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 9)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_cphja")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_15" type="Node3D" parent="."]
+[node name="Block_15" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 8.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_ik4eo")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_16" type="Node3D" parent="."]
+[node name="Block_16" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 8)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_rbtyi")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_17" type="Node3D" parent="."]
+[node name="Block_17" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, -6, 7.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_557iv")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_18" type="Node3D" parent="."]
+[node name="Block_18" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, -6, 15)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_0n4jk")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_19" type="Node3D" parent="."]
+[node name="Block_19" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, -6, 15)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_2arjn")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_20" type="Node3D" parent="."]
+[node name="Block_20" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -7)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_vkll5")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_21" type="Node3D" parent="."]
+[node name="Block_21" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -7.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_j3ana")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_22" type="Node3D" parent="."]
+[node name="Block_22" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -8)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_468o6")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_23" type="Node3D" parent="."]
+[node name="Block_23" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -8.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_ly1mw")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_24" type="Node3D" parent="."]
+[node name="Block_24" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -9)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_oti4b")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_25" type="Node3D" parent="."]
+[node name="Block_25" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -9.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_77v7p")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_26" type="Node3D" parent="."]
+[node name="Block_26" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -10)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_54qhl")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_27" type="Node3D" parent="."]
+[node name="Block_27" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -10.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_7nhfp")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_28" type="Node3D" parent="."]
+[node name="Block_28" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -11)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_i3ee3")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_29" type="Node3D" parent="."]
+[node name="Block_29" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -11.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_iq3hk")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_30" type="Node3D" parent="."]
+[node name="Block_30" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -12)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_1jlgb")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_31" type="Node3D" parent="."]
+[node name="Block_31" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -12.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_ru8vc")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_32" type="Node3D" parent="."]
+[node name="Block_32" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -13)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_nksjq")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_33" type="Node3D" parent="."]
+[node name="Block_33" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -13.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_tnuo0")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_34" type="Node3D" parent="."]
+[node name="Block_34" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -14)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_kps4u")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_35" type="Node3D" parent="."]
+[node name="Block_35" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -14.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_udaak")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_36" type="Node3D" parent="."]
+[node name="Block_36" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -15)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_lohad")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_37" type="Node3D" parent="."]
+[node name="Block_37" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -10, -15.5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_wg4v3")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_38" type="Node3D" parent="."]
+[node name="Block_38" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 3, -7)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_oi48f")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_39" type="Node3D" parent="."]
+[node name="Block_39" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 4, -2)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_my6a3")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_40" type="Node3D" parent="."]
+[node name="Block_40" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 6, 2)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_toft1")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_41" type="Node3D" parent="."]
+[node name="Block_41" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 8, 2)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_n7os0")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_42" type="Node3D" parent="."]
+[node name="Block_42" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 10, -13)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_5sqlf")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_43" type="Node3D" parent="."]
+[node name="Block_43" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 9, 8)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_qwjfu")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_44" type="Node3D" parent="."]
+[node name="Block_44" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 11, 7)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_6u580")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_45" type="Node3D" parent="."]
+[node name="Block_45" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28, 12, 10)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_xyrbf")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_46" type="Node3D" parent="."]
+[node name="Block_46" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, -9, -5)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_oy3j0")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_47" type="Node3D" parent="."]
+[node name="Block_47" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -10, -21)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_5nftk")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_48" type="Node3D" parent="."]
+[node name="Block_48" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -10, -29)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_dv0mg")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_49" type="Node3D" parent="."]
+[node name="Block_49" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -10, -41)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_hk4mm")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_50" type="Node3D" parent="."]
+[node name="Block_50" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 5, -34)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_5c12c")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_51" type="Node3D" parent="."]
+[node name="Block_51" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 6, -48)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_mxpd4")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_52" type="Node3D" parent="."]
+[node name="Block_52" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 5, -38)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_3fwwf")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_53" type="Node3D" parent="."]
+[node name="Block_53" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 7, -38)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_mjewa")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_54" type="Node3D" parent="."]
+[node name="Block_54" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 1, -41)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_oj547")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_55" type="Node3D" parent="."]
+[node name="Block_55" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, -9, -29)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_8ubre")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_56" type="Node3D" parent="."]
+[node name="Block_56" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, -9, -16)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_56fco")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_57" type="Node3D" parent="."]
+[node name="Block_57" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 5, -39)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_kvgkx")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_58" type="Node3D" parent="."]
+[node name="Block_58" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 7, -33)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_axbqd")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_59" type="Node3D" parent="."]
+[node name="Block_59" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 9, -28)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_xppb6")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_60" type="Node3D" parent="."]
+[node name="Block_60" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 11, -23)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_eyahs")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_61" type="Node3D" parent="."]
+[node name="Block_61" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 13, -19)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_otpxf")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_62" type="Node3D" parent="."]
+[node name="Block_62" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -10, -53)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_155ju")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_63" type="Node3D" parent="."]
+[node name="Block_63" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, -5, -54)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_agicv")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_64" type="Node3D" parent="."]
+[node name="Block_64" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 12, -48)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_0620p")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_65" type="Node3D" parent="."]
+[node name="Block_65" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 13, -48)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_s3nia")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_66" type="Node3D" parent="."]
+[node name="Block_66" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11, -50)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_svdku")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_67" type="Node3D" parent="."]
+[node name="Block_67" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 10, -55)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_bcqnq")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_68" type="Node3D" parent="."]
+[node name="Block_68" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 6, -44)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_aprwd")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_69" type="Node3D" parent="."]
+[node name="Block_69" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 7, -49)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_6i7nj")
 materials = Array[Material]([ExtResource("11_msavu")])
 
-[node name="Block_70" type="Node3D" parent="."]
+[node name="Block_70" type="Node3D" parent="Blocks"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 8, -53)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_rh1tb")
 materials = Array[Material]([ExtResource("11_msavu")])
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="Sky?" type="MeshInstance3D" parent="Environment"]
+cast_shadow = 0
+mesh = SubResource("BoxMesh_cm65r")
+
+[node name="Void" type="MeshInstance3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+mesh = SubResource("BoxMesh_juj2v")
 
 [connection signal="body_entered" from="ExitZone" to="ExitZone" method="on_body_entered"]

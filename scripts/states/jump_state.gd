@@ -4,6 +4,7 @@ extends MoveState
 
 @export var jump_speed : float = 4.0
 @export var seconds_till_fall : float = 0.5
+@export var jump_audio : AudioStream
 @export var fall_state : Node
 
 var jump_time_passed : float = 0.0
@@ -19,6 +20,11 @@ func begin(_state : Node, _last_state : Node):
 	var grav : GravityController = chara.GravityController
 
 	ctrl.PreventAutoSwitch.push_front(fall_state.name)
+	
+	if jump_audio == null:
+		return
+	
+	AudioManager.PlaySoundEffect(jump_audio).volume_db = linear_to_db(0.2)
 	
 func allow_switch() -> bool:
 	var ctrl : StateController = move_set.Controller

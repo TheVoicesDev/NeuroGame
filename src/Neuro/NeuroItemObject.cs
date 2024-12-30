@@ -1,5 +1,6 @@
 using System.Linq;
 using Fantome;
+using Fantome.Audio;
 
 namespace Neuro;
 
@@ -7,6 +8,8 @@ namespace Neuro;
 public partial class NeuroItemObject : Node3D
 {
     [Export] public StringName Id;
+    
+    [Export] public AudioStream PickupSound;
 
     [ExportGroup("References"), Export] public Sprite3D Sprite;
 
@@ -30,6 +33,11 @@ public partial class NeuroItemObject : Node3D
         NeuroGame game = FantomeEngine.Game as NeuroGame;
         if (_retrieved || game == null || game.Player != body)
             return;
+
+        if (PickupSound != null)
+        {
+            AudioManager.PlaySoundEffect(PickupSound);
+        }
         
         _retrieved = true;
         Collision.QueueFree();

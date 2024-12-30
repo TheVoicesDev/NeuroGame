@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cawm252q17o71"]
+[gd_scene load_steps=11 format=3 uid="uid://cawm252q17o71"]
 
 [ext_resource type="Script" uid="uid://ce701rqav7xe0" path="res://src/Fantome/Characters/MoveSet.cs" id="1_hj4ct"]
 [ext_resource type="AnimationLibrary" uid="uid://ghbyeyhsptq7" path="res://resources/movesets/p_dki_adv.tres" id="2_cl76q"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" uid="uid://b4ojso2v7rjog" path="res://scripts/states/dive_state.gd" id="3_2msq2"]
 [ext_resource type="Script" uid="uid://bx0mnbkcydhjw" path="res://scripts/states/move_state.gd" id="4_5rjs1"]
 [ext_resource type="Script" uid="uid://p8fpmia44geh" path="res://scripts/states/jump_state.gd" id="5_2jwa8"]
+[ext_resource type="AudioStream" uid="uid://dvbsno4auyabr" path="res://resources/audio/sfx/dive.wav" id="5_y8bff"]
 [ext_resource type="Script" uid="uid://cgav0t0cbeivs" path="res://scripts/states/slow_state.gd" id="6_2uxgi"]
+[ext_resource type="AudioStream" uid="uid://d13gb8c3aisjf" path="res://resources/audio/sfx/jump.wav" id="7_jpk68"]
 [ext_resource type="Script" uid="uid://dhkwj2acdvd3n" path="res://scripts/states/fall_state.gd" id="7_oijix"]
 
 [node name="Adventure" type="Node" node_paths=PackedStringArray("DefaultState")]
@@ -23,6 +25,7 @@ time_until_switch = 0.0
 script = ExtResource("3_2msq2")
 dive_speed = 8.0
 jump_speed = 3.5
+dive_audio = ExtResource("5_y8bff")
 fall_state = NodePath("../Fall")
 move_state = NodePath("../Run")
 animation_name = &"Dive"
@@ -39,6 +42,7 @@ time_until_switch = 0.01
 [node name="Jump" type="Node" parent="." node_paths=PackedStringArray("fall_state")]
 script = ExtResource("5_2jwa8")
 seconds_till_fall = 0.3
+jump_audio = ExtResource("7_jpk68")
 fall_state = NodePath("../Fall")
 speed_increment = 0.5
 speed_decrement = 0.5

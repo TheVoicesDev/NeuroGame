@@ -4,6 +4,7 @@ extends CharacterState
 
 @export var dive_speed = 0.0
 @export var jump_speed = 0.0
+@export var dive_audio : AudioStream
 
 @export_group("References")
 @export var fall_state : Node
@@ -25,6 +26,11 @@ func begin(_state : Node, _last_state : Node):
 	var char_angle : Vector2 = Vector2(-direction.z, -direction.x)
 	chara.global_rotation.y = char_angle.angle()
 	chara.velocity = Vector3(direction.x * dive_speed, jump_speed, direction.z * dive_speed)
+	
+	if dive_audio == null:
+		return
+	
+	AudioManager.PlaySoundEffect(dive_audio).volume_db = linear_to_db(0.2)
 
 func allow_switch() -> bool:
 	var ctrl : StateController = move_set.Controller
