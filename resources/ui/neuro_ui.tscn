@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://5ob7ssqkvqtt" path="res://assets/ui/item_counter.png" id="1_ac73e"]
 [ext_resource type="Script" uid="uid://c0gmfss4b44cx" path="res://src/Neuro/NeuroUi.cs" id="1_ycw54"]
-[ext_resource type="FontFile" uid="uid://bhujgnbcoe3cf" path="res://resources/fonts/Nintendo-DS-BIOS.ttf" id="2_eagv3"]
+[ext_resource type="FontFile" uid="uid://bhujgnbcoe3cf" path="res://resources/fonts/DS_UI.ttf" id="2_eagv3"]
 [ext_resource type="Texture2D" uid="uid://cjudo50m8njxj" path="res://assets/ui/health_icon.png" id="3_t60dm"]
 [ext_resource type="Texture2D" uid="uid://b8sgotoos0r7i" path="res://assets/ui/player_hp_bar_fill.png" id="4_dbv0q"]
 [ext_resource type="Shader" uid="uid://ce186wv8qk17f" path="res://resources/shaders/BarShader.gdshader" id="5_3p2nf"]

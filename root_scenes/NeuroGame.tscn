@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://mda2k63s2k1t" path="res://src/Fantome/FantomeGame.cs" id="1_uyktw"]
 [ext_resource type="Script" uid="uid://b6gm7w0ksyxm3" path="res://src/Neuro/NeuroGame.cs" id="1_yw7mq"]
-[ext_resource type="Resource" uid="uid://byhsvpmhgkv62" path="res://resources/databases/items.tres" id="2_1wfgg"]
+[ext_resource type="Resource" uid="uid://byhsvpmhgkv62" path="res://resources/data/items.tres" id="2_1wfgg"]
 [ext_resource type="Script" uid="uid://37ogukc40u0f" path="res://resources/controllers/p_dki_controller.gd" id="2_yw7mq"]
 [ext_resource type="PackedScene" uid="uid://bstf3vdm5gl8" path="res://resources/characters/neuro.tscn" id="3_1wfgg"]
 [ext_resource type="PackedScene" uid="uid://dg876kb8h1r0c" path="res://resources/levels/GameLevel.tscn" id="4_agm7f"]

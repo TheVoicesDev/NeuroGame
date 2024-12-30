@@ -1,5 +1,6 @@
-[gd_scene load_steps=956 format=3 uid="uid://dg876kb8h1r0c"]
+[gd_scene load_steps=965 format=3 uid="uid://dg876kb8h1r0c"]
 
+[ext_resource type="AudioStream" uid="uid://l5w70n4wgstk" path="res://resources/audio/mus/level.ogg" id="1_4l3qt"]
 [ext_resource type="Script" uid="uid://b2ogo4cm2doc0" path="res://resources/controllers/p_evil_controller.gd" id="2_a482a"]
 [ext_resource type="Script" uid="uid://d21m733xh6s2v" path="res://addons/cyclops_level_builder/nodes/cyclops_block.gd" id="2_lj1m6"]
 [ext_resource type="PackedScene" uid="uid://d247o6dhfmmx1" path="res://resources/objects/item.tscn" id="3_a482a"]
@@ -10,7 +11,21 @@
 [ext_resource type="PackedScene" uid="uid://x1jfwp6twfkn" path="res://resources/objects/medkit.tscn" id="5_uycsy"]
 [ext_resource type="Script" uid="uid://c3y0cp8218jhl" path="res://addons/cyclops_level_builder/resources/data_vector_float.gd" id="5_ylxds"]
 [ext_resource type="Script" uid="uid://cq7goyhta7hw7" path="res://addons/cyclops_level_builder/resources/mesh_vector_data.gd" id="6_uycsy"]
+[ext_resource type="FontFile" uid="uid://fhabcxx46ql5" path="res://resources/fonts/DS_Game.ttf" id="7_cm65r"]
 [ext_resource type="Material" uid="uid://drx7cvjorebs3" path="res://resources/materials/block_mat.tres" id="11_msavu"]
+
+[sub_resource type="GDScript" id="GDScript_msavu"]
+resource_name = "MusicSetter"
+script/source = "extends Node
+
+@export var stream : AudioStream
+
+func _ready() -> void:
+	var music : AudioStreamPlayer = AudioManager.Music
+	music.volume_db = linear_to_db(0.35)
+	if music.stream != stream:
+		AudioManager.PlayMusic(stream)
+"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a482a"]
 size = Vector3(18, 6, 18)
@@ -35,6 +50,55 @@ size = Vector3(12, 4, 23)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_juj2v"]
 size = Vector3(13, 5, 11)
+
+[sub_resource type="GDScript" id="GDScript_4l3qt"]
+resource_name = "DeathZone"
+script/source = "extends Area3D
+
+func _ready() -> void:
+	body_exited.connect(on_body_exited)
+
+func on_body_exited(body : Node3D):
+	if body is not FantomeCharacter:
+		return
+	
+	var chara : FantomeCharacter = body
+	chara.Damage(999, null)
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ghugu"]
+size = Vector3(150, 84, 150)
+
+[sub_resource type="GDScript" id="GDScript_cm65r"]
+resource_name = "ExitZone"
+script/source = "extends Area3D
+
+var transitioning : bool = false
+
+func _process(delta: float) -> void:
+	var game : NeuroGame = FantomeEngine.GetGame()
+	if game.ItemCount == game.MaxItems:
+		visible = true
+		monitoring = true
+
+func on_body_entered(body : Node3D) -> void:
+	var game : NeuroGame = FantomeEngine.GetGame()
+	if body != game.Player or transitioning:
+		return
+	
+	transitioning = true
+	TransitionManager.SwitchMainScene(\"neuro_transition\", \"res://root_scenes/EndingStory.tscn\")
+"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cm65r"]
+albedo_color = Color(1, 0.192431, 0.43042, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4l3qt"]
+material = SubResource("StandardMaterial3D_cm65r")
+size = Vector3(5, 1, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wb8oy"]
+size = Vector3(5, 1, 5)
 
 [sub_resource type="Resource" id="Resource_4l3qt"]
 script = ExtResource("3_rpor3")
@@ -9476,6 +9540,10 @@ light_energy = 0.1
 shadow_enabled = true
 sky_mode = 1
 
+[node name="MusicSetter" type="Node" parent="."]
+script = SubResource("GDScript_msavu")
+stream = ExtResource("1_4l3qt")
+
 [node name="EvilAreas" type="Node3D" parent="."]
 
 [node name="EvilArea1" type="Area3D" parent="EvilAreas" node_paths=PackedStringArray("character")]
@@ -9723,6 +9791,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5, 14, -20.5)
 
 [node name="Medkit7" parent="Heals" instance=ExtResource("5_uycsy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5, 16, 19.5)
+
+[node name="DeathZone" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = SubResource("GDScript_4l3qt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 33, 0)
+shape = SubResource("BoxShape3D_ghugu")
+
+[node name="ExitZone" type="Area3D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
+script = SubResource("GDScript_cm65r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ExitZone"]
+mesh = SubResource("BoxMesh_4l3qt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExitZone"]
+shape = SubResource("BoxShape3D_wb8oy")
+
+[node name="Label3D" type="Label3D" parent="ExitZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+billboard = 2
+text = "EXIT"
+font = ExtResource("7_cm65r")
+font_size = 500
+outline_size = 0
 
 [node name="block0" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -10155,3 +10254,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 8, -53)
 script = ExtResource("2_lj1m6")
 mesh_vector_data = SubResource("Resource_rh1tb")
 materials = Array[Material]([ExtResource("11_msavu")])
+
+[connection signal="body_entered" from="ExitZone" to="ExitZone" method="on_body_entered"]

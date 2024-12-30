@@ -1,0 +1,51 @@
+[gd_resource type="Resource" script_class="NeuroStorySequence" load_steps=14 format=3 uid="uid://d0eyxktgujdcv"]
+
+[ext_resource type="Script" uid="uid://viavnxxpwls2" path="res://src/Neuro/NeuroSequenceData.cs" id="1_17w2e"]
+[ext_resource type="Texture2D" uid="uid://cwgftyjvrkvns" path="res://assets/story/end/1e.png" id="1_f4sku"]
+[ext_resource type="Script" uid="uid://05bnu1nko2fa" path="res://src/Neuro/NeuroStorySequence.cs" id="1_wtdeg"]
+[ext_resource type="AudioStream" uid="uid://dda2ylbpr3nym" path="res://resources/audio/mus/story.ogg" id="2_lxsjp"]
+[ext_resource type="Texture2D" uid="uid://bbctm7m3rs2jj" path="res://assets/story/end/2e.png" id="3_8ekj6"]
+[ext_resource type="Texture2D" uid="uid://byye7oinxvop3" path="res://assets/story/end/3e.png" id="4_em3n4"]
+[ext_resource type="Texture2D" uid="uid://bn4xduxclrj0x" path="res://assets/story/end/4e.png" id="5_0swy0"]
+[ext_resource type="Texture2D" uid="uid://cr536kivjgn1u" path="res://assets/story/end/5e.png" id="6_ahxu1"]
+
+[sub_resource type="Resource" id="Resource_d7amb"]
+script = ExtResource("1_17w2e")
+Images = Array[Texture2D]([ExtResource("1_f4sku")])
+FrameRate = 0.0
+Loop = false
+metadata/_custom_type_script = ExtResource("1_17w2e")
+
+[sub_resource type="Resource" id="Resource_2mkry"]
+script = ExtResource("1_17w2e")
+Images = Array[Texture2D]([ExtResource("3_8ekj6")])
+FrameRate = 0.0
+Loop = false
+metadata/_custom_type_script = ExtResource("1_17w2e")
+
+[sub_resource type="Resource" id="Resource_imvcg"]
+script = ExtResource("1_17w2e")
+Images = Array[Texture2D]([ExtResource("4_em3n4")])
+FrameRate = 0.0
+Loop = false
+metadata/_custom_type_script = ExtResource("1_17w2e")
+
+[sub_resource type="Resource" id="Resource_0ng8y"]
+script = ExtResource("1_17w2e")
+Images = Array[Texture2D]([ExtResource("5_0swy0")])
+FrameRate = 0.0
+Loop = false
+metadata/_custom_type_script = ExtResource("1_17w2e")
+
+[sub_resource type="Resource" id="Resource_c32te"]
+script = ExtResource("1_17w2e")
+Images = Array[Texture2D]([ExtResource("6_ahxu1")])
+FrameRate = 0.0
+Loop = false
+metadata/_custom_type_script = ExtResource("1_17w2e")
+
+[resource]
+script = ExtResource("1_wtdeg")
+Data = Array[Object]([SubResource("Resource_d7amb"), SubResource("Resource_2mkry"), SubResource("Resource_imvcg"), SubResource("Resource_0ng8y"), SubResource("Resource_c32te")])
+Music = ExtResource("2_lxsjp")
+metadata/_custom_type_script = ExtResource("1_wtdeg")

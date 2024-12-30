@@ -2,21 +2,21 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://bhujgnbcoe3cf"
-path="res://.godot/imported/Nintendo-DS-BIOS.ttf-62632d02c1f7000e65d3891517396152.fontdata"
+uid="uid://fhabcxx46ql5"
+path="res://.godot/imported/DS_Game.ttf-ea5391267285868fa9fcb36c31e6e385.fontdata"
 
 [deps]
 
-source_file="res://resources/fonts/Nintendo-DS-BIOS.ttf"
-dest_files=["res://.godot/imported/Nintendo-DS-BIOS.ttf-62632d02c1f7000e65d3891517396152.fontdata"]
+source_file="res://resources/fonts/DS_Game.ttf"
+dest_files=["res://.godot/imported/DS_Game.ttf-ea5391267285868fa9fcb36c31e6e385.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=true
 disable_embedded_bitmaps=true
-multichannel_signed_distance_field=true
+multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
 allow_system_fallback=true

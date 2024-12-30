@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqvp0ocggokv4"]
+
+[ext_resource type="Texture2D" uid="uid://yl8y5m3hbhsq" path="res://assets/story/beginning/1.png" id="1_0o8wk"]
+[ext_resource type="Script" uid="uid://drkouqgund7oc" path="res://scripts/story_sequence.gd" id="1_c4kfy"]
+[ext_resource type="Theme" uid="uid://4w1h1b58d2j6" path="res://resources/themes/menu.tres" id="2_xwu7t"]
+[ext_resource type="FontFile" uid="uid://bhujgnbcoe3cf" path="res://resources/fonts/DS_UI.ttf" id="4_1qyb2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_18msi"]
+font = ExtResource("4_1qyb2")
+font_size = 72
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(3, 3)
+
+[node name="StorySequence" type="Control" node_paths=PackedStringArray("image", "next_button")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c4kfy")
+image = NodePath("Image")
+next_button = NodePath("CanvasLayer/NextButton")
+
+[node name="BG" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Image" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0o8wk")
+stretch_mode = 5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
+
+[node name="NextButton" type="Button" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -262.0
+offset_top = -114.0
+offset_right = -36.0
+offset_bottom = -34.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_xwu7t")
+text = "Next ->"
+
+[node name="SkipText" type="Label" parent="."]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Press SPACE to skip cutscene"
+label_settings = SubResource("LabelSettings_18msi")
+
+[connection signal="pressed" from="CanvasLayer/NextButton" to="." method="advance"]

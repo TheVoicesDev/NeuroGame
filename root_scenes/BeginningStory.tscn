@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cqakhbmt23okr"]
+
+[ext_resource type="PackedScene" uid="uid://dqvp0ocggokv4" path="res://resources/objects/StorySequence.tscn" id="1_13yer"]
+[ext_resource type="Resource" uid="uid://de37afin83xtb" path="res://resources/data/beginning_story.tres" id="2_7lwup"]
+
+[node name="BeginningStory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StorySequence" parent="." instance=ExtResource("1_13yer")]
+layout_mode = 1
+sequence = ExtResource("2_7lwup")
+next_scene = "res://root_scenes/NeuroGame.tscn"

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bymcykgtl8ca3"]
+
+[ext_resource type="PackedScene" uid="uid://dqvp0ocggokv4" path="res://resources/objects/StorySequence.tscn" id="1_fm0w1"]
+[ext_resource type="Resource" uid="uid://d0eyxktgujdcv" path="res://resources/data/ending_story.tres" id="2_fm0w1"]
+
+[node name="EndingStory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StorySequence" parent="." instance=ExtResource("1_fm0w1")]
+layout_mode = 1
+sequence = ExtResource("2_fm0w1")
+next_scene = "res://root_scenes/MainMenu.tscn"

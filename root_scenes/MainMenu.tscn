@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bxgadja3wbu2u" path="res://assets/ui/logo.png" id="1_4o8v8"]
 [ext_resource type="Theme" uid="uid://4w1h1b58d2j6" path="res://resources/themes/menu.tres" id="2_vyd8c"]
-[ext_resource type="FontFile" uid="uid://bhujgnbcoe3cf" path="res://resources/fonts/Nintendo-DS-BIOS.ttf" id="3_cvpsg"]
+[ext_resource type="FontFile" uid="uid://bhujgnbcoe3cf" path="res://resources/fonts/DS_UI.ttf" id="3_cvpsg"]
 
 [sub_resource type="GDScript" id="GDScript_vyd8c"]
 resource_name = "Menu"
@@ -16,7 +16,7 @@ func on_play_pressed() -> void:
 	
 	transitioning = true
 	layer = 0
-	TransitionManager.SwitchMainScene(\"neuro_transition\", \"res://root_scenes/NeuroGame.tscn\")
+	TransitionManager.SwitchMainScene(\"neuro_transition\", \"res://root_scenes/BeginningStory.tscn\")
 
 func on_credits_pressed() -> void:
 	var credits : Control = $\"Credits\"
@@ -33,57 +33,6 @@ font_size = 128
 [sub_resource type="LabelSettings" id="LabelSettings_cvpsg"]
 font = ExtResource("3_cvpsg")
 font_size = 72
-
-[sub_resource type="Animation" id="Animation_4o8v8"]
-resource_name = "enter"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UI/Title:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 0.5),
-"update": 0,
-"values": [Vector2(187, 200), Vector2(187, 168)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI/Title:modulate")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("UI/VBoxContainer:position")
-tracks/2/interp = 2
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(768, 500), Vector2(768, 540)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("UI/VBoxContainer:modulate")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_vyd8c"]
 length = 0.001
@@ -146,6 +95,57 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4o8v8"]
+resource_name = "enter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Title:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(187, 200), Vector2(187, 168)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Title:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/VBoxContainer:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(768, 500), Vector2(768, 540)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/VBoxContainer:modulate")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cvpsg"]

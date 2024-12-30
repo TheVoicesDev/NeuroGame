@@ -1,0 +1,41 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://bhujgnbcoe3cf"
+path="res://.godot/imported/DS_UI.ttf-ca9d18da6963e6f03ebeea3c5c9f7b6f.fontdata"
+
+[deps]
+
+source_file="res://resources/fonts/DS_UI.ttf"
+dest_files=["res://.godot/imported/DS_UI.ttf-ca9d18da6963e6f03ebeea3c5c9f7b6f.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=0
+generate_mipmaps=true
+disable_embedded_bitmaps=true
+multichannel_signed_distance_field=true
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=0
+subpixel_positioning=4
+keep_rounding_remainders=false
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[{
+"chars": [],
+"glyphs": [],
+"name": "New Configuration",
+"size": Vector2i(16, 0),
+&"variation_embolden": 0.0
+}]
+language_support={}
+script_support={}
+opentype_features={}

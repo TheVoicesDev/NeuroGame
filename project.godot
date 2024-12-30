@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 FantomeEngine="*res://src/Fantome/FantomeEngineInstance.cs"
 UserSettings="*res://src/Fantome/Data/UserSettingsInstance.cs"
 TransitionManager="*res://src/Fantome/Transitions/TransitionManagerInstance.cs"
+AudioManager="*res://src/Fantome/Audio/AudioManagerInstance.cs"
 DebugInfo="*res://resources/DebugInfo.tscn"
 CyclopsAutoload="*res://addons/cyclops_level_builder/cyclops_global_scene.tscn"
 
