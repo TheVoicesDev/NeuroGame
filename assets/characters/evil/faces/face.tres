@@ -1,0 +1,68 @@
+[gd_resource type="SpriteFrames" load_steps=8 format=3 uid="uid://vovindxy8oqx"]
+
+[ext_resource type="Texture2D" uid="uid://dflyy4awxr458" path="res://assets/characters/evil/faces/BlushL.png" id="1_sise6"]
+[ext_resource type="Texture2D" uid="uid://crnpim6avq1ji" path="res://assets/characters/evil/faces/BrowL.png" id="2_t4s6l"]
+[ext_resource type="Texture2D" uid="uid://cof4o4tec0j6x" path="res://assets/characters/evil/faces/EyeL.png" id="3_4xp8f"]
+[ext_resource type="Texture2D" uid="uid://o520bpp36msp" path="res://assets/characters/evil/faces/Mouth.png" id="4_qxl07"]
+[ext_resource type="Texture2D" uid="uid://06p4yfk57b7o" path="res://assets/characters/evil/faces/BlushR.png" id="5_lprmv"]
+[ext_resource type="Texture2D" uid="uid://bboiuvmkvf4eo" path="res://assets/characters/evil/faces/BrowR.png" id="6_8pg87"]
+[ext_resource type="Texture2D" uid="uid://b2bku080bwdgk" path="res://assets/characters/evil/faces/EyeR.png" id="7_6u2dr"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sise6")
+}],
+"loop": true,
+"name": &"L_Blush_Def",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t4s6l")
+}],
+"loop": true,
+"name": &"L_Brow_Def",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4xp8f")
+}],
+"loop": true,
+"name": &"L_Eye_Def",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qxl07")
+}],
+"loop": true,
+"name": &"Mouth_Def",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_lprmv")
+}],
+"loop": true,
+"name": &"R_Blush_Def",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_8pg87")
+}],
+"loop": true,
+"name": &"R_Brow_Def",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_6u2dr")
+}],
+"loop": true,
+"name": &"R_Eye_Def",
+"speed": 5.0
+}]
