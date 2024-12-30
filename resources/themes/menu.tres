@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://4w1h1b58d2j6"]
+
+[ext_resource type="FontFile" uid="uid://bhujgnbcoe3cf" path="res://resources/fonts/Nintendo-DS-BIOS.ttf" id="1_klpa0"]
+
+[resource]
+Button/font_sizes/font_size = 96
+Button/fonts/font = ExtResource("1_klpa0")

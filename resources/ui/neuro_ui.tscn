@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://de7h73430nsvq"]
+[gd_scene load_steps=17 format=3 uid="uid://de7h73430nsvq"]
 
 [ext_resource type="Texture2D" uid="uid://5ob7ssqkvqtt" path="res://assets/ui/item_counter.png" id="1_ac73e"]
 [ext_resource type="Script" uid="uid://c0gmfss4b44cx" path="res://src/Neuro/NeuroUi.cs" id="1_ycw54"]
@@ -19,6 +19,12 @@ shader = ExtResource("5_3p2nf")
 shader_parameter/black = Color(0.990396, 0.616619, 1, 1)
 shader_parameter/white = Color(1, 1, 1, 0)
 shader_parameter/value = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_b82yp"]
+font = ExtResource("2_eagv3")
+font_size = 48
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_oj8pq"]
 font = ExtResource("2_eagv3")
@@ -144,6 +150,20 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_ycw54")
 
+[node name="Controls" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.95
+anchor_bottom = 0.925
+text = "[WASD / Left Stick] - Move
+[Space / Button South] - Jump / Dive (can cancel punch)
+[Left Mouse / Button West] - Punch"
+label_settings = SubResource("LabelSettings_b82yp")
+horizontal_alignment = 2
+vertical_alignment = 2
+
 [node name="ItemLayout" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -162,7 +182,7 @@ anchor_top = 1.0
 anchor_right = 0.85
 anchor_bottom = 1.0
 offset_top = -225.0
-color = Color(0, 0, 0, 0.313726)
+color = Color(0, 0, 0, 0.635294)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ItemLayout/ItemInfo"]
 layout_mode = 1

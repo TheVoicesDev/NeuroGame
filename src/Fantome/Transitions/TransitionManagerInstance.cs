@@ -18,6 +18,7 @@ public partial class TransitionManagerInstance : CanvasLayer
         Layer = 2;
         
         Container = new Control();
+        Container.MouseFilter = Control.MouseFilterEnum.Pass;
         AddChild(Container);
         
         Container.SetAnchorsPreset(Control.LayoutPreset.FullRect, true);

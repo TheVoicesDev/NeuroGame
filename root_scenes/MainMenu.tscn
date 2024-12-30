@@ -1,3 +1,262 @@
-[gd_scene format=3 uid="uid://b0bmsgwdrd27w"]
+[gd_scene load_steps=10 format=3 uid="uid://b0bmsgwdrd27w"]
 
-[node name="MainMenu" type="Node"]
+[ext_resource type="Texture2D" uid="uid://bxgadja3wbu2u" path="res://assets/ui/logo.png" id="1_4o8v8"]
+[ext_resource type="Theme" uid="uid://4w1h1b58d2j6" path="res://resources/themes/menu.tres" id="2_vyd8c"]
+[ext_resource type="FontFile" uid="uid://bhujgnbcoe3cf" path="res://resources/fonts/Nintendo-DS-BIOS.ttf" id="3_cvpsg"]
+
+[sub_resource type="GDScript" id="GDScript_vyd8c"]
+resource_name = "Menu"
+script/source = "extends CanvasLayer
+
+var transitioning : bool = false
+
+func on_play_pressed() -> void:
+	if transitioning:
+		return
+	
+	transitioning = true
+	layer = 0
+	TransitionManager.SwitchMainScene(\"neuro_transition\", \"res://root_scenes/NeuroGame.tscn\")
+
+func on_credits_pressed() -> void:
+	var credits : Control = $\"Credits\"
+	credits.visible = not credits.visible
+
+func on_quit_pressed() -> void:
+	get_tree().quit()
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_82ip6"]
+font = ExtResource("3_cvpsg")
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_cvpsg"]
+font = ExtResource("3_cvpsg")
+font_size = 72
+
+[sub_resource type="Animation" id="Animation_4o8v8"]
+resource_name = "enter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Title:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(187, 200), Vector2(187, 168)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Title:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/VBoxContainer:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(768, 500), Vector2(768, 540)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/VBoxContainer:modulate")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vyd8c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Title:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(187, 168)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Title:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Title:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/VBoxContainer:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(768, 540)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/VBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cvpsg"]
+_data = {
+&"RESET": SubResource("Animation_vyd8c"),
+&"enter": SubResource("Animation_4o8v8")
+}
+
+[node name="MainMenu" type="CanvasLayer"]
+layer = 10
+script = SubResource("GDScript_vyd8c")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="Title" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -773.0
+offset_top = -372.0
+offset_right = 773.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_4o8v8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.5
+anchor_right = 0.6
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="UI/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_vyd8c")
+text = "Play"
+
+[node name="Credits" type="Button" parent="UI/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_vyd8c")
+text = "Credits"
+
+[node name="Quit" type="Button" parent="UI/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("2_vyd8c")
+text = "Quit"
+
+[node name="Credits" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Credits/Panel"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Credits/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+label_settings = SubResource("LabelSettings_82ip6")
+horizontal_alignment = 1
+
+[node name="Desc" type="Label" parent="Credits/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Binpuki - programmer, 3d modeler, musician
+My Friend that doesn't want to be credited - All of the other art"
+label_settings = SubResource("LabelSettings_cvpsg")
+
+[node name="Button" type="Button" parent="Credits/Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_vyd8c")
+text = "Close"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cvpsg")
+}
+autoplay = "enter"
+
+[connection signal="pressed" from="UI/VBoxContainer/Play" to="." method="on_play_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Credits" to="." method="on_credits_pressed"]
+[connection signal="pressed" from="UI/VBoxContainer/Quit" to="." method="on_quit_pressed"]
+[connection signal="pressed" from="Credits/Panel/VBoxContainer/Button" to="." method="on_credits_pressed"]
