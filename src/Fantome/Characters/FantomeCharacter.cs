@@ -1,3 +1,4 @@
+using Fantome.Audio;
 using Godot.Collections;
 
 namespace Fantome.Characters;
@@ -12,6 +13,8 @@ public partial class FantomeCharacter : CharacterBody3D
 	[Export] public float MoveStrength { get; set; } = 0f;
 	
 	[Export] public Vector3 LookDirection;
+
+	[Export] public AudioStream HitSound;
 
 	[ExportGroup("References"), Export] public VisualInstance3D VisualReference;
 
@@ -48,6 +51,14 @@ public partial class FantomeCharacter : CharacterBody3D
 			return;
 		
 		Health -= damage; // BAD FIX LATER
+
+		if (HitSound != null)
+		{
+			AudioStreamPlayer sfx = AudioManager.PlaySoundEffect(HitSound);
+			sfx.VolumeDb = (float)Mathf.LinearToDb(0.4);
+			sfx.PitchScale = (float)GD.RandRange(0.9f, 1.1f);
+		}
+		
 		StateController.EmitSignal(StateController.SignalName.Damaged, damage, instigator);
 	}
 

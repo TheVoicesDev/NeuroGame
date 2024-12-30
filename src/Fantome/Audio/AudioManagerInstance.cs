@@ -21,7 +21,7 @@ public partial class AudioManagerInstance : Node
         Music.Play();
     }
 
-    public void PlaySoundEffect(AudioStream stream)
+    public AudioStreamPlayer PlaySoundEffect(AudioStream stream)
     {
         AudioStreamPlayer sfx = new AudioStreamPlayer();
         sfx.Stream = stream;
@@ -29,5 +29,7 @@ public partial class AudioManagerInstance : Node
         
         AddChild(sfx);
         sfx.Play();
+
+        return sfx;
     }
 }

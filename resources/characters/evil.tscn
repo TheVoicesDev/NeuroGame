@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://cahvjoueri8t"]
+[gd_scene load_steps=28 format=3 uid="uid://cahvjoueri8t"]
 
 [ext_resource type="Script" uid="uid://nmyoh6gi32a1" path="res://src/Doki/Characters/DokiCharacter.cs" id="1_d26d2"]
 [ext_resource type="ArrayMesh" uid="uid://c6tlcam33vie8" path="res://assets/characters/evil/mesh.tres" id="2_76r1r"]
+[ext_resource type="AudioStream" uid="uid://c5ov01bgpr2wq" path="res://resources/audio/sfx/hit.wav" id="2_uwn5o"]
 [ext_resource type="Script" uid="uid://cejr36hrvg2su" path="res://src/Fantome/Characters/StateController.cs" id="3_iq8u8"]
 [ext_resource type="SpriteFrames" uid="uid://vovindxy8oqx" path="res://assets/characters/evil/faces/face.tres" id="3_uwn5o"]
 [ext_resource type="PackedScene" uid="uid://ccedq5hm5kr5x" path="res://resources/movesets/p_nro_global.tscn" id="4_76r1r"]
@@ -107,6 +108,7 @@ floor_max_angle = 1.0472
 script = ExtResource("1_d26d2")
 Health = 50
 MaxHealth = 50
+HitSound = ExtResource("2_uwn5o")
 VisualReference = NodePath("Skeleton3D/Mesh")
 HitBox = NodePath("Hitbox")
 SkeletonReference = NodePath("Skeleton3D")
