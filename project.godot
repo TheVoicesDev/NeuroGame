@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="NeuroGame"
+config/version="1.0.0"
 run/main_scene="uid://cq67dc0jgj1go"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
