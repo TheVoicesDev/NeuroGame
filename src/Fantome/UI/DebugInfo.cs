@@ -38,10 +38,13 @@ public partial class DebugInfo : CanvasLayer
 		if (!OS.IsDebugBuild()) VRAM.Visible = false;
 		DebugInformation.VisibilityChanged += () =>
 		{
+			Visible = DebugInformation.Visible;
 			if (!DebugInformation.Visible) return;
 			UpdateObjects();
 			UpdateScene();
 		};
+		
+		Visible = false;
 		DebugInformation.Visible = false;
 		UpdateStaticLabels();
 	}

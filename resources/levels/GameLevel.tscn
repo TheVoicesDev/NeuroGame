@@ -9536,7 +9536,7 @@ face_vertex_data = {
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ax0sw"]
-albedo_color = Color(0.662598, 0.26812, 5.77569e-07, 1)
+albedo_color = Color(0.402833, 0.220751, 0.0148766, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_cm65r"]
 material = SubResource("StandardMaterial3D_ax0sw")

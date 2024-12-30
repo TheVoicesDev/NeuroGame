@@ -158,8 +158,8 @@ anchor_top = 0.5
 anchor_right = 0.95
 anchor_bottom = 0.925
 text = "[WASD / Left Stick] - Move
-[Space / Button South] - Jump / Dive (can cancel punch)
-[Left Mouse / Button West] - Punch"
+[Space / Button South] - Jump / Dive (Overrides Kick)
+[Left Mouse / Button West] - Kick"
 label_settings = SubResource("LabelSettings_b82yp")
 horizontal_alignment = 2
 vertical_alignment = 2
