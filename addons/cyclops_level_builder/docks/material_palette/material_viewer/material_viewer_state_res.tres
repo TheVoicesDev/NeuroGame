@@ -4,4 +4,4 @@
 
 [resource]
 script = ExtResource("1_3sifp")
-active_material_path = "res://assets/characters/doki/materials/hat.tres"
+active_material_path = "res://resources/materials/block_mat.tres"

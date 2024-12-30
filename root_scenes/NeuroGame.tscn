@@ -12,6 +12,7 @@
 [node name="NeuroGame" type="Node3D" node_paths=PackedStringArray("Ui", "Player", "Focus", "Camera")]
 script = ExtResource("1_yw7mq")
 Items = ExtResource("2_1wfgg")
+MaxItems = 8
 Ui = NodePath("NeuroUI")
 Player = NodePath("Neuro")
 Focus = NodePath("Neuro")

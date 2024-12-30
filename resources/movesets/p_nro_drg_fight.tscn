@@ -30,7 +30,7 @@ func allow_switch() -> bool:
 	var ctrl : StateController = move_set.Controller
 	var chara : DokiCharacter = ctrl.Character
 	
-	return chara.AttemptCombo and ctrl.CurrentState != self
+	return chara.AttemptCombo and ctrl.CurrentState != self and chara.is_on_floor()
 
 func state_process(_delta : float):
 	var ctrl : StateController = move_set.Controller
