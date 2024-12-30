@@ -28,5 +28,6 @@ public partial class NeuroGame : FantomeGame
 
         ItemCount++;
         Ui.UpdateCounter(ItemCount, MaxItems);
+        Ui.ShowItem(entry);
     }
 }

@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsinfym3d00i0"]
+
+[ext_resource type="Script" uid="uid://cpok8jx5fb0ne" path="res://scripts/objects/locked_box.gd" id="1_rflob"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ylxds"]
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a482a"]
+albedo_color = Color(0.90847, 0.24333, 0.442253, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a482a"]
+material = SubResource("StandardMaterial3D_a482a")
+flip_faces = true
+size = Vector3(1.5, 1.5, 1.5)
+
+[node name="LockedBox" type="StaticBody3D"]
+script = ExtResource("1_rflob")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ylxds")
+debug_color = Color(0.75697, 0.186785, 1, 0.42)
+debug_fill = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_a482a")

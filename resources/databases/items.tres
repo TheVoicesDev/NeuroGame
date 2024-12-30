@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="NeuroItemDatabase" load_steps=19 format=3 uid="uid://byhsvpmhgkv62"]
 
-[ext_resource type="Script" path="res://src/Neuro/NeuroItemDatabase.cs" id="1_s505f"]
+[ext_resource type="Script" uid="uid://cn5hbc77pcv8f" path="res://src/Neuro/NeuroItemDatabase.cs" id="1_s505f"]
 [ext_resource type="Texture2D" uid="uid://cgrikf1nk45vb" path="res://assets/items/calc.png" id="1_ta7wr"]
-[ext_resource type="Script" path="res://src/Neuro/NeuroItemEntry.cs" id="2_mbebm"]
+[ext_resource type="Script" uid="uid://d3dppm60ujn7t" path="res://src/Neuro/NeuroItemEntry.cs" id="2_mbebm"]
 [ext_resource type="Texture2D" uid="uid://bq1r4dyalxtdh" path="res://assets/items/cookie.png" id="3_fhdo6"]
 [ext_resource type="Texture2D" uid="uid://b2vwieu2eq6fo" path="res://assets/items/duck.png" id="4_bok7t"]
 [ext_resource type="Texture2D" uid="uid://pwbm7de0ayn8" path="res://assets/items/hallu_stew.png" id="5_bok7t"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=283 format=3 uid="uid://dg876kb8h1r0c"]
+[gd_scene load_steps=284 format=3 uid="uid://dg876kb8h1r0c"]
 
 [ext_resource type="Script" uid="uid://b2ogo4cm2doc0" path="res://resources/controllers/p_evil_controller.gd" id="2_a482a"]
 [ext_resource type="Script" uid="uid://d21m733xh6s2v" path="res://addons/cyclops_level_builder/nodes/cyclops_block.gd" id="2_lj1m6"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://yfs86u0cljfy" path="res://addons/cyclops_level_builder/resources/data_vector_byte.gd" id="3_rpor3"]
 [ext_resource type="PackedScene" uid="uid://cahvjoueri8t" path="res://resources/characters/evil.tscn" id="3_ylxds"]
 [ext_resource type="Script" uid="uid://csmeqg2f7h3hd" path="res://addons/cyclops_level_builder/resources/data_vector_int.gd" id="4_a482a"]
+[ext_resource type="PackedScene" uid="uid://bsinfym3d00i0" path="res://resources/objects/locked_box.tscn" id="4_ylxds"]
 [ext_resource type="Script" uid="uid://c3y0cp8218jhl" path="res://addons/cyclops_level_builder/resources/data_vector_float.gd" id="5_ylxds"]
 [ext_resource type="Script" uid="uid://cq7goyhta7hw7" path="res://addons/cyclops_level_builder/resources/mesh_vector_data.gd" id="6_uycsy"]
 
@@ -2765,6 +2766,12 @@ face_vertex_data = {
 
 [node name="GameLevel" type="Node3D"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.101317, 0.994854, 0, -0.994854, -0.101317, 0, 3.95281, 0)
+light_energy = 0.5
+shadow_enabled = true
+sky_mode = 1
+
 [node name="EvilAreas" type="Node3D" parent="."]
 
 [node name="KillZone" type="Area3D" parent="EvilAreas" node_paths=PackedStringArray("character")]
@@ -2784,8 +2791,15 @@ shape = SubResource("BoxShape3D_a482a")
 
 [node name="Items" type="Node3D" parent="."]
 
-[node name="Item" parent="Items" instance=ExtResource("3_a482a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.861302, -4.81198)
+[node name="Cookie" type="Node3D" parent="Items"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 6, 33)
+
+[node name="LockedBox" parent="Items/Cookie" node_paths=PackedStringArray("character") instance=ExtResource("4_ylxds")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.245, 0)
+character = NodePath("../../../EvilAreas/KillZone/NeuroEvil")
+
+[node name="Item" parent="Items/Cookie" instance=ExtResource("3_a482a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.245, 0)
 
 [node name="block0" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://de7h73430nsvq"]
+[gd_scene load_steps=14 format=3 uid="uid://de7h73430nsvq"]
 
 [ext_resource type="Texture2D" uid="uid://5ob7ssqkvqtt" path="res://assets/ui/item_counter.png" id="1_ac73e"]
 [ext_resource type="Script" uid="uid://c0gmfss4b44cx" path="res://src/Neuro/NeuroUi.cs" id="1_ycw54"]
@@ -6,13 +6,61 @@
 [ext_resource type="Texture2D" uid="uid://cjudo50m8njxj" path="res://assets/ui/health_icon.png" id="3_t60dm"]
 [ext_resource type="Texture2D" uid="uid://b8sgotoos0r7i" path="res://assets/ui/player_hp_bar_fill.png" id="4_dbv0q"]
 [ext_resource type="Texture2D" uid="uid://c6oxixnekeafg" path="res://assets/ui/player_hp_bar.png" id="5_ycw54"]
+[ext_resource type="Texture2D" uid="uid://bq1r4dyalxtdh" path="res://assets/items/cookie.png" id="7_oj8pq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_t60dm"]
 font = ExtResource("2_eagv3")
 font_size = 64
 font_color = Color(0, 0, 0, 1)
 
-[node name="NeuroUI" type="Control" node_paths=PackedStringArray("ItemCounterLabel")]
+[sub_resource type="LabelSettings" id="LabelSettings_oj8pq"]
+font = ExtResource("2_eagv3")
+font_size = 72
+
+[sub_resource type="LabelSettings" id="LabelSettings_3p2nf"]
+font = ExtResource("2_eagv3")
+font_size = 42
+
+[sub_resource type="Animation" id="Animation_oj8pq"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ItemLayout:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 225)]
+}
+
+[sub_resource type="Animation" id="Animation_3p2nf"]
+resource_name = "open"
+length = 4.0
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ItemLayout:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4167, 0.541667, 3.5833, 4),
+"transitions": PackedFloat32Array(1, 2, 0, 1, 2),
+"update": 0,
+"values": [Vector2(0, 225), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 225)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3p2nf"]
+_data = {
+&"RESET": SubResource("Animation_oj8pq"),
+&"open": SubResource("Animation_3p2nf")
+}
+
+[node name="NeuroUI" type="Control" node_paths=PackedStringArray("ItemCounterLabel", "Animator", "ItemIcon", "ItemName", "ItemDescription")]
 texture_filter = 1
 layout_mode = 3
 anchors_preset = 15
@@ -22,6 +70,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ycw54")
 ItemCounterLabel = NodePath("Health/ItemCounter/Label")
+Animator = NodePath("AnimationPlayer")
+ItemIcon = NodePath("ItemLayout/ItemInfo/HBoxContainer/Icon")
+ItemName = NodePath("ItemLayout/ItemInfo/HBoxContainer/VBoxContainer/Title")
+ItemDescription = NodePath("ItemLayout/ItemInfo/HBoxContainer/VBoxContainer/Desc")
 
 [node name="Health" type="Control" parent="."]
 layout_mode = 1
@@ -82,3 +134,57 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_ycw54")
+
+[node name="ItemLayout" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 225.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemInfo" type="ColorRect" parent="ItemLayout"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 1.0
+anchor_right = 0.85
+anchor_bottom = 1.0
+offset_top = -225.0
+color = Color(0, 0, 0, 0.313726)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ItemLayout/ItemInfo"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.05
+anchor_right = 0.99
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="ItemLayout/ItemInfo/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("7_oj8pq")
+stretch_mode = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ItemLayout/ItemInfo/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Title" type="Label" parent="ItemLayout/ItemInfo/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cookie"
+label_settings = SubResource("LabelSettings_oj8pq")
+
+[node name="Desc" type="Label" parent="ItemLayout/ItemInfo/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Something about the cookie idk"
+label_settings = SubResource("LabelSettings_3p2nf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3p2nf")
+}
