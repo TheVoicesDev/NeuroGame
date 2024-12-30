@@ -1,4 +1,4 @@
-[gd_scene load_steps=284 format=3 uid="uid://dg876kb8h1r0c"]
+[gd_scene load_steps=285 format=3 uid="uid://dg876kb8h1r0c"]
 
 [ext_resource type="Script" uid="uid://b2ogo4cm2doc0" path="res://resources/controllers/p_evil_controller.gd" id="2_a482a"]
 [ext_resource type="Script" uid="uid://d21m733xh6s2v" path="res://addons/cyclops_level_builder/nodes/cyclops_block.gd" id="2_lj1m6"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cahvjoueri8t" path="res://resources/characters/evil.tscn" id="3_ylxds"]
 [ext_resource type="Script" uid="uid://csmeqg2f7h3hd" path="res://addons/cyclops_level_builder/resources/data_vector_int.gd" id="4_a482a"]
 [ext_resource type="PackedScene" uid="uid://bsinfym3d00i0" path="res://resources/objects/locked_box.tscn" id="4_ylxds"]
+[ext_resource type="PackedScene" uid="uid://x1jfwp6twfkn" path="res://resources/objects/medkit.tscn" id="5_uycsy"]
 [ext_resource type="Script" uid="uid://c3y0cp8218jhl" path="res://addons/cyclops_level_builder/resources/data_vector_float.gd" id="5_ylxds"]
 [ext_resource type="Script" uid="uid://cq7goyhta7hw7" path="res://addons/cyclops_level_builder/resources/mesh_vector_data.gd" id="6_uycsy"]
 
@@ -2800,6 +2801,11 @@ character = NodePath("../../../EvilAreas/KillZone/NeuroEvil")
 
 [node name="Item" parent="Items/Cookie" instance=ExtResource("3_a482a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.245, 0)
+
+[node name="Heals" type="Node3D" parent="."]
+
+[node name="Medkit" parent="Heals" instance=ExtResource("5_uycsy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 9)
 
 [node name="block0" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
