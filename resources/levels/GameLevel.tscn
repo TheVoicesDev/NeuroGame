@@ -9552,12 +9552,6 @@ size = Vector3(900, 1, 900)
 
 [node name="GameLevel" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.101317, 0.994854, 0, -0.994854, -0.101317, 0, 3.95281, 0)
-light_energy = 0.1
-shadow_enabled = true
-sky_mode = 1
-
 [node name="MusicSetter" type="Node" parent="."]
 script = SubResource("GDScript_msavu")
 stream = ExtResource("1_4l3qt")
@@ -10270,5 +10264,14 @@ mesh = SubResource("BoxMesh_cm65r")
 [node name="Void" type="MeshInstance3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
 mesh = SubResource("BoxMesh_juj2v")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5, 45, 1)
+light_energy = 5.0
+light_size = 1.0
+shadow_enabled = true
+spot_range = 3390.62
+spot_attenuation = 0.6
+spot_angle = 60.0
 
 [connection signal="body_entered" from="ExitZone" to="ExitZone" method="on_body_entered"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://b0bmsgwdrd27w"]
+[gd_scene load_steps=11 format=3 uid="uid://b0bmsgwdrd27w"]
 
 [ext_resource type="Texture2D" uid="uid://bxgadja3wbu2u" path="res://assets/ui/logo.png" id="1_4o8v8"]
+[ext_resource type="Texture2D" uid="uid://dagrjlsj21bdq" path="res://assets/ui/NEUROSAMA1.png" id="1_82ip6"]
 [ext_resource type="Theme" uid="uid://4w1h1b58d2j6" path="res://resources/themes/menu.tres" id="2_vyd8c"]
 [ext_resource type="FontFile" uid="uid://bhujgnbcoe3cf" path="res://resources/fonts/DS_UI.ttf" id="3_cvpsg"]
 
@@ -166,6 +167,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+
+[node name="ColorRect" type="ColorRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.462098, 0.219819, 0.360056, 1)
+
+[node name="Neuro" type="TextureRect" parent="UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -966.0
+offset_top = -210.0
+offset_right = 34.0
+offset_bottom = 790.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_82ip6")
 
 [node name="Title" type="TextureRect" parent="UI"]
 layout_mode = 1
