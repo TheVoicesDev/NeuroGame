@@ -26,10 +26,10 @@ script = ExtResource("3_2msq2")
 dive_speed = 8.0
 jump_speed = 3.5
 dive_audio = ExtResource("5_y8bff")
-fall_state = NodePath("../Fall")
-move_state = NodePath("../Run")
 animation_name = &"Dive"
 time_until_switch = 0.0
+fall_state = NodePath("../Fall")
+move_state = NodePath("../Run")
 
 [node name="Run" type="Node" parent="."]
 script = ExtResource("4_5rjs1")
@@ -43,13 +43,13 @@ time_until_switch = 0.01
 script = ExtResource("5_2jwa8")
 seconds_till_fall = 0.3
 jump_audio = ExtResource("7_jpk68")
-fall_state = NodePath("../Fall")
 speed_increment = 0.5
 speed_decrement = 0.5
 rotation_weight = 0.25
 strength_threshold = Vector2(-0.01, 1)
 animation_name = &"Jump"
 time_until_switch = 0.0
+fall_state = NodePath("../Fall")
 
 [node name="Slow" type="Node" parent="."]
 script = ExtResource("6_2uxgi")
@@ -61,8 +61,8 @@ time_until_switch = 0.0
 
 [node name="Fall" type="Node" parent="." node_paths=PackedStringArray("jump_state", "move_state")]
 script = ExtResource("7_oijix")
-jump_state = NodePath("../Jump")
-move_state = NodePath("../Run")
 rotation_weight = 0.025
 animation_name = &"Fall"
 time_until_switch = 0.01
+jump_state = NodePath("../Jump")
+move_state = NodePath("../Run")
